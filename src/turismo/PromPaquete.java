@@ -1,8 +1,7 @@
 package turismo;
 
-public class PromPaquete implements Promocion {
-	private Atraccion[] atracciones;
-
+public class PromPaquete extends Promocion {
+	
 	@Override
 	public double calcularDescuento() {
 		return 0;

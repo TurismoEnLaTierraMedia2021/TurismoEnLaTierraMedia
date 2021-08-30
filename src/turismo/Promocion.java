@@ -1,7 +1,9 @@
 package turismo;
 
-public interface Promocion {
+public abstract class Promocion extends Vendible{
+	protected Atraccion[] atracciones;
 
-public double calcularDescuento();
-	
+	public double calcularDescuento() {
+		return 0;
+	}
 }

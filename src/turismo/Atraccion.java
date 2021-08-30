@@ -17,4 +17,10 @@ public class Atraccion extends Vendible {
 		this.cupo = cupo;
 	}
 
+	@Override
+	public String toString() {
+		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
+				+ tipoDeAtraccion + ", cupo=" + cupo + "]";
+	}
+
 }

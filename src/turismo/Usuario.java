@@ -13,6 +13,12 @@ public class Usuario {
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
+				+ ", tipoDeAtraccion=" + tipoDeAtraccion + "]";
+	}
 		
 }
 

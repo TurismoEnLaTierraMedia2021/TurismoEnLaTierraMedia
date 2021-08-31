@@ -63,27 +63,49 @@ public class FileManager {
 		return atracciones;
 	}
 
-	public static LinkedList<Promocion> getPromocionesAventura(String archivo) {
-		LinkedList<Promocion> promocionesAventura = new LinkedList<Promocion>();
+	public static LinkedList<Promocion> getPromociones(String archivo) {
+		LinkedList<Promocion> promociones = new LinkedList<Promocion>();
 		Scanner sc = null;
 		try {
 			sc = new Scanner(new File(archivo));
-			
+
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
 				String datos[] = linea.split("-");
 				String nombrePack = datos[0];
-			
-				if (nombrePack == "Pack Aventura") {
+
+				if (nombrePack.equals("Pack aventura")) {
 					String nombreAtraccion1 = datos[1];
 					String nombreAtraccion2 = datos[2];
 					double porcentajeDescuento = Double.parseDouble(datos[3]);
 
-					PackAventura pa = new PackAventura(nombrePack, nombreAtraccion1, nombreAtraccion2,
+					PromocionDescuento pa = new PromocionDescuento(nombrePack, nombreAtraccion1, nombreAtraccion2,
 							porcentajeDescuento);
 
-					if (!promocionesAventura.contains(pa))
-						promocionesAventura.add(pa);
+					if (!promociones.contains(pa))
+						promociones.add(pa);
+
+				} else if (nombrePack.equals("Pack degustacion")) {
+					String nombreAtraccion1 = datos[1];
+					String nombreAtraccion2 = datos[2];
+					double precio = Double.parseDouble(datos[3]);
+
+					PromocionAbsoluta pa = new PromocionAbsoluta(nombrePack, nombreAtraccion1, nombreAtraccion2,
+							precio);
+
+					if (!promociones.contains(pa))
+						promociones.add(pa);
+
+				} else {
+					String nombreAtraccion1 = datos[1];
+					String nombreAtraccion2 = datos[2];
+					String nombreAtraccion3 = datos[3];
+
+					PromocionAxB pa = new PromocionAxB(nombrePack, nombreAtraccion1, nombreAtraccion2,
+							nombreAtraccion3);
+
+					if (!promociones.contains(pa))
+						promociones.add(pa);
 
 				}
 
@@ -93,7 +115,7 @@ public class FileManager {
 		}
 		sc.close();
 
-		return promocionesAventura;
+		return promociones;
 	}
 }
 

@@ -4,10 +4,11 @@ import java.util.LinkedList;
 
 public class PromocionAbsoluta extends Promocion {
 
-	public PromocionAbsoluta(String nombrePack, String nombreAtraccion1, String nombreAtraccion2, double precio) {
+	public PromocionAbsoluta(String tipoPromocion, String nombrePack, double precio) {
+		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
-		this.nombreAtraccion1 = nombreAtraccion1;
-		this.nombreAtraccion2 = nombreAtraccion2;
+		//this.nombreAtraccion1 = nombreAtraccion1;
+		//this.nombreAtraccion2 = nombreAtraccion2;
 		this.precio = precio;
 	}
 
@@ -19,8 +20,10 @@ public class PromocionAbsoluta extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionAbsoluta [nombrePack=" + nombrePack + ", nombreAtraccion1=" + nombreAtraccion1
-				+ ", nombreAtraccion2=" + nombreAtraccion2 + ", precio=" + precio + "]";
+		return "PromocionAbsoluta [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack
+				+ ", nombreAtraccion1=" + nombreAtraccion1 + ", nombreAtraccion2=" + nombreAtraccion2 + ", precio="
+				+ precio + "]";
 	}
+
 
 }

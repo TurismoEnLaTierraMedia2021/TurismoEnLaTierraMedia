@@ -3,6 +3,7 @@ package turismo;
 import java.util.LinkedList;
 
 public abstract class Promocion extends Vendible{
+	protected String tipoPromocion;
 	protected String nombrePack;
 	protected String nombreAtraccion1;
 	protected String nombreAtraccion2;

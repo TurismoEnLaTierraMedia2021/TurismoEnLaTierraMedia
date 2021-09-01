@@ -1,12 +1,12 @@
 package turismo;
 
 import java.util.LinkedList;
-import java.util.Objects;
 
 public class PromocionDescuento extends Promocion {
-
-	public PromocionDescuento(String nombrePack, String nombreAtraccion1, String nombreAtraccion2,
+	
+	public PromocionDescuento(String tipoPromocion, String nombrePack, String nombreAtraccion1, String nombreAtraccion2,
 			double porcentajeDescuento) {
+		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
 		this.nombreAtraccion1 = nombreAtraccion1;
 		this.nombreAtraccion2 = nombreAtraccion2;
@@ -21,8 +21,11 @@ public class PromocionDescuento extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionDescuento [nombrePack=" + nombrePack + ", nombreAtraccion1=" + nombreAtraccion1
-				+ ", nombreAtraccion2=" + nombreAtraccion2 + ", porcentajeDescuento=" + porcentajeDescuento + "]";
+		return "PromocionDescuento [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack
+				+ ", nombreAtraccion1=" + nombreAtraccion1 + ", nombreAtraccion2=" + nombreAtraccion2
+				+ ", porcentajeDescuento=" + porcentajeDescuento + "]";
 	}
+
+	
 
 }

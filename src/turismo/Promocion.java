@@ -17,8 +17,7 @@ public abstract class Promocion extends Vendible{
 		String stringFinal = "";
 		
 		for (Atraccion atraccion : atracciones) {
-			stringFinal += atraccion.getNombre() + ", ";
-			
+			stringFinal += atraccion.getNombre() + ", ";			
 		}
 		return stringFinal;
 	}

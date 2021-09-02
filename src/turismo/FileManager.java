@@ -129,11 +129,11 @@ public class FileManager {
 
 				} else {
 					String nombrePack = datos[1];
-					int atraccionRegalo = Integer.parseInt(datos[2]);
+					int posicionRegalo = Integer.parseInt(datos[2]);
 					int cantAtracciones = Integer.parseInt(datos[3]);
-
+					Atraccion atraccionRegalo = null;
 					LinkedList<Atraccion> atraccionesAxB = new LinkedList<Atraccion>();
-					
+
 					for (int i = 0; i < cantAtracciones; i++) {
 
 						String nombreAtraccion = datos[4 + i];
@@ -142,14 +142,17 @@ public class FileManager {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
 								atraccionesAxB.add(atraccionActual);
 							}
+							if (atraccionActual.getNombre().equals(datos[posicionRegalo])) {
+								atraccionRegalo = atraccionActual;
+							}
+
 						}
 					}
 
-					PromocionAxB pp = new PromocionAxB(tipoPromocion, nombrePack, atraccionesAxB);
+					PromocionAxB pp = new PromocionAxB(tipoPromocion, nombrePack, atraccionesAxB, atraccionRegalo);
 
 					if (!promociones.contains(pp))
 						promociones.add(pp);
-
 				}
 
 			}

@@ -4,12 +4,10 @@ import java.util.LinkedList;
 
 public class PromocionAxB extends Promocion {
 
-	public PromocionAxB(String tipoPromocion, String nombrePack, String nombreAtraccion1, String nombreAtraccion2, String nombreAtraccion3) {
+	public PromocionAxB(String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones) {
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
-		this.nombreAtraccion1 = nombreAtraccion1;
-		this.nombreAtraccion2 = nombreAtraccion2;
-		this.nombreAtraccion3 = nombreAtraccion3;
+		this.atracciones = atracciones;
 	}
 
 	@Override
@@ -20,9 +18,7 @@ public class PromocionAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionAxB [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", nombreAtraccion1="
-				+ nombreAtraccion1 + ", nombreAtraccion2=" + nombreAtraccion2 + ", nombreAtraccion3=" + nombreAtraccion3
-				+ "]";
+		return "PromocionAxB [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "]";
 	}
 	
 }

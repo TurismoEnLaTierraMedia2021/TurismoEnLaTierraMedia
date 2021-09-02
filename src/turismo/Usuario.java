@@ -22,16 +22,6 @@ public class Usuario {
 		
 }
 
-//public static void main(String[] args) {
-//
-//		String[] usuario = {"Eowyn","AVENTURA","10","8"};
-//		
-//		Usuario eowyn = new Usuario(usuario[0], Integer.parseInt(usuario[2]),
-//				Integer.parseInt(usuario[3]));
-//		
-//		System.out.println(eowyn.presupuesto);
-//	}
-
 
 
 

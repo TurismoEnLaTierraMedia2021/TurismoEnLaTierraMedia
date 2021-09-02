@@ -67,6 +67,8 @@ public class FileManager {
 
 	public static LinkedList<Promocion> getPromociones(String archivo) {
 		LinkedList<Promocion> promociones = new LinkedList<Promocion>();
+		// Esto esta duplicado para probar
+		LinkedList<Atraccion> atraccionesParaPromocion = FileManager.getAtracciones("Atracciones");
 		Scanner sc = null;
 
 		try {
@@ -81,54 +83,77 @@ public class FileManager {
 					String nombrePack = datos[1];
 					double porcentajeDescuento = Double.parseDouble(datos[2]);
 					int cantAtracciones = Integer.parseInt(datos[3]);
-					List<Atraccion> atraccionesParaPromocion = FileManager.getAtracciones("Atracciones");
-					String[] nombreAtraccion = new String[cantAtracciones];
-					Atraccion[] atraccionesParaPromocionar = new Atraccion[cantAtracciones];
+
+					LinkedList<Atraccion> atraccionesDescuento = new LinkedList<Atraccion>();
+
 					for (int i = 0; i < cantAtracciones; i++) {
-						if(atracciones.)){
-							
+
+						String nombreAtraccion = datos[4 + i];
+
+						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+								atraccionesDescuento.add(atraccionActual);
+							}
 						}
-						nombreAtraccion[i] = (datos[4 + i]);
-
 					}
-					
-					
 
-					System.out.println(Arrays.toString(nombreAtraccion));
-					System.out.println();
-//					PromocionDescuento pa = new PromocionDescuento(tipoPromocion, nombrePack, porcentajeDescuento);
-//
-//					if (!promociones.contains(pa))
-//						promociones.add(pa);
+					PromocionDescuento pd = new PromocionDescuento(tipoPromocion, nombrePack, atraccionesDescuento,
+							porcentajeDescuento);
 
-//				} else if (tipoPromocion.equals("Absoluta")) {
-//					String nombrePack = datos[1];
-//					String nombreAtraccion1 = datos[2];
-//					String nombreAtraccion2 = datos[3];
-//					double precio = Double.parseDouble(datos[4]);
-//
-//					PromocionAbsoluta pa = new PromocionAbsoluta(tipoPromocion, nombrePack, nombreAtraccion1, nombreAtraccion2,
-//							precio);
-//
-//					if (!promociones.contains(pa))
-//						promociones.add(pa);
-//
-//				} else {
-//					String nombrePack = datos[1];
-//					String nombreAtraccion1 = datos[2];
-//					String nombreAtraccion2 = datos[3];
-//					String nombreAtraccion3 = datos[4];
-//
-//					PromocionAxB pa = new PromocionAxB(tipoPromocion, nombrePack, nombreAtraccion1, nombreAtraccion2,
-//							nombreAtraccion3);
-//
-//					if (!promociones.contains(pa))
-//						promociones.add(pa);
-//
-//				}
+					if (!promociones.contains(pd))
+						promociones.add(pd);
+
+				} else if (tipoPromocion.equals("Absoluta")) {
+					String nombrePack = datos[1];
+					double precio = Double.parseDouble(datos[2]);
+					int cantAtracciones = Integer.parseInt(datos[3]);
+
+					LinkedList<Atraccion> atraccionesAbsolutas = new LinkedList<Atraccion>();
+
+					for (int i = 0; i < cantAtracciones; i++) {
+
+						String nombreAtraccion = datos[4 + i];
+
+						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+								atraccionesAbsolutas.add(atraccionActual);
+							}
+						}
+					}
+
+					PromocionAbsoluta pa = new PromocionAbsoluta(tipoPromocion, nombrePack, atraccionesAbsolutas,
+							precio);
+
+					if (!promociones.contains(pa))
+						promociones.add(pa);
+
+				} else {
+					String nombrePack = datos[1];
+					int atraccionRegalo = Integer.parseInt(datos[2]);
+					int cantAtracciones = Integer.parseInt(datos[3]);
+
+					LinkedList<Atraccion> atraccionesAxB = new LinkedList<Atraccion>();
+					
+					for (int i = 0; i < cantAtracciones; i++) {
+
+						String nombreAtraccion = datos[4 + i];
+
+						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+								atraccionesAxB.add(atraccionActual);
+							}
+						}
+					}
+
+					PromocionAxB pp = new PromocionAxB(tipoPromocion, nombrePack, atraccionesAxB);
+
+					if (!promociones.contains(pp))
+						promociones.add(pp);
 
 				}
+
 			}
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -137,49 +162,3 @@ public class FileManager {
 		return promociones;
 	}
 }
-
-//
-//}
-//if(nombrePack == "Pack degustacion") {
-//String nombreAtraccion1 = datos[1];
-//String nombreAtraccion2 = datos[2];
-//double precio = Double.parseDouble(datos[3]);
-//
-//}
-//if(nombrePack == "Pack degustacion") {
-//String nombreAtraccion1 = datos[1];
-//String nombreAtraccion2 = datos[2];
-//String nombreAtraccion3 = datos[3];
-//
-//}
-//
-//			
-//if(!promociones.contains(p))
-//promociones.add(p);
-
-//public static void leerArchivo(String archivo) throws IOException {
-//	if (archivo == "Usuarios") {
-//		FileReader fr = null;
-//		BufferedReader br = null;
-//
-//		fr = new FileReader("Usuarios");
-//		br = new BufferedReader(fr);
-//		String linea;
-//
-//		while ((linea = br.readLine()) != null) {
-//
-//			String[] datosUsuarios = linea.split("-");
-//			String name = datosUsuarios[0];
-//			TipoDeAtraccion tipo = TipoDeAtraccion.valueOf(datosUsuarios[1]);
-//			double presupuesto = Double.parseDouble(datosUsuarios[2]);
-//			double tiempoDisponible = Double.parseDouble(datosUsuarios[3]);
-//
-//			Usuario usuarios = new Usuario(name, presupuesto, tiempoDisponible, tipo);
-//			System.out.println(usuarios);
-//		}
-//		br.close();
-//	}
-//	if (archivo == "Atracciones") {
-//		
-//	}
-//}

@@ -11,7 +11,7 @@ public class GuiaTuristica {
 		System.out.println(usuarios);
 		List<Atraccion> atracciones = FileManager.getAtracciones("Atracciones");
 		System.out.println(atracciones);
-		List<Promocion> promocionesDescuento = FileManager.getPromociones("Promociones");
-		System.out.println(promocionesDescuento);
+		List<Promocion> promociones = FileManager.getPromociones("Promociones");
+		System.out.println(promociones);
 	}
 }

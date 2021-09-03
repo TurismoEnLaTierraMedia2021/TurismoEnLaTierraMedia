@@ -1,18 +1,16 @@
 package turismo;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileManager {
 
-	public static LinkedList<Usuario> getUsuarios(String archivo) {
+	public static LinkedList<Usuario> getUsuarios() {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			sc = new Scanner(new File("Usuarios"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
@@ -36,11 +34,11 @@ public class FileManager {
 		return usuarios;
 	}
 
-	public static LinkedList<Atraccion> getAtracciones(String archivo) {
+	public static LinkedList<Atraccion> getAtracciones() {
 		LinkedList<Atraccion> atracciones = new LinkedList<Atraccion>();
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			sc = new Scanner(new File("Atracciones"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
@@ -65,14 +63,15 @@ public class FileManager {
 		return atracciones;
 	}
 
-	public static LinkedList<Promocion> getPromociones(String archivo) {
+	public static LinkedList<Promocion> getPromociones() {
 		LinkedList<Promocion> promociones = new LinkedList<Promocion>();
 		// Esto esta duplicado para probar
-		LinkedList<Atraccion> atraccionesParaPromocion = FileManager.getAtracciones("Atracciones");
+		LinkedList<Atraccion> atracciones = FileManager.getAtracciones();
+		
 		Scanner sc = null;
 
 		try {
-			sc = new Scanner(new File(archivo));
+			sc = new Scanner(new File("Promociones"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
@@ -90,7 +89,7 @@ public class FileManager {
 
 						String nombreAtraccion = datos[4 + i];
 
-						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
 								atraccionesDescuento.add(atraccionActual);
 							}
@@ -114,7 +113,7 @@ public class FileManager {
 
 						String nombreAtraccion = datos[4 + i];
 
-						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
 								atraccionesAbsolutas.add(atraccionActual);
 							}
@@ -138,7 +137,7 @@ public class FileManager {
 
 						String nombreAtraccion = datos[4 + i];
 
-						for (Atraccion atraccionActual : atraccionesParaPromocion) {
+						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
 								atraccionesAxB.add(atraccionActual);
 							}

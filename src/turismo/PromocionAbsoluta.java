@@ -12,9 +12,10 @@ public class PromocionAbsoluta extends Promocion {
 	}
 
 	@Override
-	public double calcularDescuento(LinkedList<Promocion> promociones) {
-
-		return 0;
+	public double calcularDescuento() {
+			
+		return this.getPrecio();
+		
 	}
 
 	@Override

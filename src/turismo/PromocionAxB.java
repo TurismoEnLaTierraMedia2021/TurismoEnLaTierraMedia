@@ -5,22 +5,28 @@ import java.util.LinkedList;
 public class PromocionAxB extends Promocion {
 	private Atraccion regalo;
 
-	public PromocionAxB(String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones, Atraccion regalo) {
+	public PromocionAxB(String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones) {
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
 		this.atracciones = atracciones;
-		this.regalo = regalo;
+		
 	}
 
 	@Override
-	public double calcularDescuento(LinkedList<Promocion> promociones) {
-
-		return 0;
+	public double calcularDescuento() {
+		Double total = 0.00;
+		Atraccion gratis = atracciones.get(atracciones.size()-1);
+		for (Atraccion atraccionActual : this.atracciones) {
+			total += atraccionActual.getCosto();
+		}
+		
+		return total - gratis.getCosto();
+		
 	}
 
 	@Override
 	public String toString() {
-		return "PromocionAxB [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "gratis=" + regalo.getNombre() + "]";
+		return "PromocionAxB [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "gratis= "+ atracciones.get(atracciones.size()-1).getNombre() + "]";
 	}
 	
 }

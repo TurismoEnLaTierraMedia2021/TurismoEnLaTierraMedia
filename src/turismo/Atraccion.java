@@ -26,63 +26,24 @@ public class Atraccion extends Vendible {
 	}
 
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
 
 	public double getCosto() {
 		return costo;
 	}
 
-
-
-	public void setCosto(double costo) {
-		this.costo = costo;
-	}
-
-
-
 	public double getDuracion() {
 		return duracion;
 	}
-
-
-
-	public void setDuracion(double duracion) {
-		this.duracion = duracion;
-	}
-
-
 
 	public TipoDeAtraccion getTipoDeAtraccion() {
 		return tipoDeAtraccion;
 	}
 
-
-
-	public void setTipoDeAtraccion(TipoDeAtraccion tipoDeAtraccion) {
-		this.tipoDeAtraccion = tipoDeAtraccion;
-	}
-
-
-
 	public int getCupo() {
 		return cupo;
-	}
-
-
-
-	public void setCupo(int cupo) {
-		this.cupo = cupo;
 	}
 
 }

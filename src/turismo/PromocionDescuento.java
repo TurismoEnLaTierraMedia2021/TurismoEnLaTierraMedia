@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 public class PromocionDescuento extends Promocion {
 	
-	
 	public PromocionDescuento(String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones, double porcentajeDescuento) {
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
@@ -13,9 +12,13 @@ public class PromocionDescuento extends Promocion {
 	}
 
 	@Override
-	public double calcularDescuento(LinkedList<Promocion> promociones) {
+	public double calcularDescuento() {
+		Double total = 0.00;
+		for (Atraccion atraccionActual : this.atracciones) {
+			total += atraccionActual.getCosto();
+		}
 		
-		return 0;
+		return (total * (1-this.getPorcentajeDescuento()/100)) ;
 	}
 
 	@Override

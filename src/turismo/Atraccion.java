@@ -7,8 +7,7 @@ public class Atraccion extends Vendible {
 	private TipoDeAtraccion tipoDeAtraccion;
 	private int cupo;
 
-	public Atraccion(String nombre, double costo, double duracion,
-			TipoDeAtraccion tipoDeAtraccion, int cupo) {
+	public Atraccion(String nombre, double costo, double duracion, TipoDeAtraccion tipoDeAtraccion, int cupo) {
 
 		this.nombre = nombre;
 		this.costo = costo;
@@ -17,14 +16,24 @@ public class Atraccion extends Vendible {
 		this.cupo = cupo;
 	}
 
+	@Override
+	public void comprar() {
+		if(this.hayCupo()) {
+			this.cupo -= 1;
+		}	
+	}
 	
-	
+	@Override
+	public boolean hayCupo() {
+
+		return (this.getCupo() != 0);
+	}
+
 	@Override
 	public String toString() {
 		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
 				+ tipoDeAtraccion + ", cupo=" + cupo + "]";
 	}
-
 
 	public String getNombre() {
 		return nombre;

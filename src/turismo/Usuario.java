@@ -6,8 +6,7 @@ public class Usuario {
 	private double tiempoDisponible;
 	private TipoDeAtraccion tipoDeAtraccion;
 
-	public Usuario(String nombre, double presupuesto, double tiempoDisponible,
-			TipoDeAtraccion tipoDeAtraccion) {
+	public Usuario(String nombre, double presupuesto, double tiempoDisponible, TipoDeAtraccion tipoDeAtraccion) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
@@ -19,11 +18,39 @@ public class Usuario {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
 				+ ", tipoDeAtraccion=" + tipoDeAtraccion + "]";
 	}
-		
+
+	public void comprarVendible(Vendible vendible) {
+		this.presupuesto -= vendible.getCosto();
+		this.tiempoDisponible -= vendible.getDuracion();
+		vendible.comprar();
+	}
+//Para borrar	
+//	public void comprarAtraccion(Atraccion atraccion) {
+//		this.presupuesto -= atraccion.getCosto();
+//		this.tiempoDisponible -= atraccion.getDuracion();
+//		atraccion.comprar();
+//	}
+//	
+//	public void comprarPromocion(Promocion promocion) {
+//		this.presupuesto -= promocion.getCosto();
+//		this.tiempoDisponible -= promocion.getDuracion();
+//		promocion.comprar();
+//	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public double getPresupuesto() {
+		return presupuesto;
+	}
+
+	public double getTiempoDisponible() {
+		return tiempoDisponible;
+	}
+
+	public TipoDeAtraccion getTipoDeAtraccion() {
+		return tipoDeAtraccion;
+	}
+
 }
-
-
-
-
-
-

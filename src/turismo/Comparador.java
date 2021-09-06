@@ -33,11 +33,11 @@ public class Comparador implements Comparator<Vendible> {
 	 *
 	 */
 		
-		if(this.preferenciaUsuario == o1.getTipoDeAtraccion() 
-				&& this.preferencia != v2.getTipo()) 
+/*		if(this.preferenciaUsuario == o1.getTipoDeAtraccion() 
+				&& this.preferenciaUsuario != v2.getTipo()) 
 			return -1;
-		else if(this.preferencia != v1.getTipo() 
-				&& this.preferencia == v2.getTipo()) 
+		else if(this.preferenciaUsuario != v1.getTipo() 
+				&& this.preferenciaUsuario == v2.getTipo()) 
 			return 1;
 		else {
 			if(v1.getPrecio() > v2.getPrecio()) //return -1*Double.compare(v1.getPrecio(), v2.getPrecio());
@@ -48,5 +48,6 @@ public class Comparador implements Comparator<Vendible> {
 				return v1.getColor().compareTo(v2.getColor());	
 		}
 	}
-	
+	*/
+}
 }

@@ -6,7 +6,7 @@ public abstract class Vendible {
 	protected String nombre = "";
 	protected double costo;
 	protected double duracion;
-	protected TipoDeAtraccion tipoDeAtraccion;
+	protected Tipo tipo;
 	protected int cupo;
 	protected LinkedList<Atraccion> atracciones;
 
@@ -29,8 +29,8 @@ public abstract class Vendible {
 		return nombre;
 	}
 
-		public TipoDeAtraccion getTipoDeAtraccion() {
-		return tipoDeAtraccion;
+	public Tipo getTipo() {
+		return tipo;
 	}
 
 	public int getCupo() {

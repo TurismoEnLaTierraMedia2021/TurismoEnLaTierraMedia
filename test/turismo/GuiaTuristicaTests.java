@@ -44,7 +44,6 @@ public class GuiaTuristicaTests {
 		assertTrue(promociones.get(0).hayCupo());
 		assertTrue(promociones.get(1).hayCupo());
 		assertTrue(promociones.get(2).hayCupo());
-		assertTrue(promociones.get(3).hayCupo());
 		
 	}
 	
@@ -80,6 +79,14 @@ public class GuiaTuristicaTests {
 		assertEquals(31, atracciones.get(6).getCupo(),0.01);
 		assertEquals(0.5, usuarios.get(0).getTiempoDisponible(),0.01);
 		
+	}
+	
+	@Test
+	public void comparadorTiposTest() {
+		assertEquals(Tipo.AVENTURA, promociones.get(0).getTipo());
+		assertEquals(Tipo.AVENTURA, atracciones.get(0).getTipo());
+		assertEquals(promociones.get(0).getTipo(), atracciones.get(0).getTipo());
+		assertEquals(usuarios.get(0).getTipoDeAtraccion(), atracciones.get(0).getTipo());
 	}
 	
 

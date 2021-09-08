@@ -4,15 +4,15 @@ public class Atraccion extends Vendible {
 	private String nombre = "";
 	private double costo;
 	private double duracion;
-	private TipoDeAtraccion tipoDeAtraccion;
+	private Tipo tipo;
 	private int cupo;
 
-	public Atraccion(String nombre, double costo, double duracion, TipoDeAtraccion tipoDeAtraccion, int cupo) {
+	public Atraccion(String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo) {
 
 		this.nombre = nombre;
 		this.costo = costo;
 		this.duracion = duracion;
-		this.tipoDeAtraccion = tipoDeAtraccion;
+		this.tipo = tipoDeAtraccion;
 		this.cupo = cupo;
 	}
 
@@ -32,7 +32,7 @@ public class Atraccion extends Vendible {
 	@Override
 	public String toString() {
 		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
-				+ tipoDeAtraccion + ", cupo=" + cupo + "]";
+				+ tipo + ", cupo=" + cupo + "]";
 	}
 
 	public String getNombre() {
@@ -46,9 +46,10 @@ public class Atraccion extends Vendible {
 	public double getDuracion() {
 		return duracion;
 	}
-
-	public TipoDeAtraccion getTipoDeAtraccion() {
-		return tipoDeAtraccion;
+	
+	@Override
+	public Tipo getTipo() {
+		return tipo;
 	}
 
 	public int getCupo() {

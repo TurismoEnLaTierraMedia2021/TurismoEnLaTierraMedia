@@ -3,11 +3,11 @@ package turismo;
 import java.util.Comparator;
 
 public class Comparador implements Comparator<Vendible> {
-	private TipoDeAtraccion preferenciaUsuario;
+	private Tipo preferenciaUsuario;
 	private double presupuesto;
 	private double tiempoDisponible;
 
-	public Comparador(TipoDeAtraccion preferenciaUsuario) {
+	public Comparador(Tipo preferenciaUsuario) {
 		this.preferenciaUsuario = preferenciaUsuario;
 
 	}
@@ -25,18 +25,19 @@ public class Comparador implements Comparator<Vendible> {
 		 *
 		 */
 
-		if (this.preferenciaUsuario == o1.getTipoDeAtraccion() && this.preferenciaUsuario == o2.getTipoDeAtraccion()) {
+		if (this.preferenciaUsuario == o1.getTipo() && this.preferenciaUsuario == o2.getTipo()) {
 			return siNoSon(o1, o2);
-		} else if (this.preferenciaUsuario != o1.getTipoDeAtraccion()
-				&& this.preferenciaUsuario != o2.getTipoDeAtraccion()) {
+		} else if (this.preferenciaUsuario != o1.getTipo()
+				&& this.preferenciaUsuario != o2.getTipo()) {
 			return siNoSon(o1, o2);
 
 		}else {
 			return 0;
 		}
-
 	}
 
+	
+	
 	private int siNoSon(Vendible o1, Vendible o2) {
 		if (o1.esPromo() && o2.esPromo()) {
 			if (Double.compare(o1.getCosto(), o2.getCosto()) == 0) {

@@ -1,5 +1,5 @@
 package turismo;
 
-public enum TipoDeAtraccion {
+public enum Tipo {
 	PAISAJE, AVENTURA, DEGUSTACION
 }

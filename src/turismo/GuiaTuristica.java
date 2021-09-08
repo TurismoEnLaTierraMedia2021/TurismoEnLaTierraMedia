@@ -3,6 +3,7 @@ package turismo;
 import java.io.IOException;
 import java.util.List;
 
+
 public class GuiaTuristica {
 
 	public static void main(String[] args) throws IOException {
@@ -13,6 +14,11 @@ public class GuiaTuristica {
 		System.out.println(atracciones);
 		List<Promocion> promociones = FileManager.getPromociones(atracciones);
 		System.out.println(promociones);
+		promociones.sort(new Comparador(Tipo.DEGUSTACION));
+		for(Promocion a : promociones) {
+			//if(usuarioPuedeComprar(v))
+				System.out.println(a);
+		}
 		
 	}
 }
@@ -25,7 +31,7 @@ import java.io.InputStreamReader;
 public class Test {
 
 	public static void main(String[] args) throws IOException {
-		 // Con este codigo pedimos un número
+		 // Con este codigo pedimos un nï¿½mero
         System.out.println("Ingrese el monto del capital:");
         Integer numero1 = cargarNumero();
         

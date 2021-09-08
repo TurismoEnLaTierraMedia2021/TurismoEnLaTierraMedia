@@ -18,7 +18,7 @@ public class FileManager {
 				String datos[] = linea.split("-");
 
 				String nombre = datos[0];
-				TipoDeAtraccion tipo = TipoDeAtraccion.valueOf(datos[1]);
+				Tipo tipo = Tipo.valueOf(datos[1]);
 				double presupuesto = Double.parseDouble(datos[2]);
 				double tiempoDisponible = Double.parseDouble(datos[3]);
 
@@ -49,7 +49,7 @@ public class FileManager {
 				double costo = Double.parseDouble(datos[1]);
 				double duracion = Double.parseDouble(datos[2]);
 				int cupo = Integer.parseInt(datos[3]);
-				TipoDeAtraccion tipo = TipoDeAtraccion.valueOf(datos[4]);
+				Tipo tipo = Tipo.valueOf(datos[4]);
 
 				Atraccion a = new Atraccion(nombre, costo, duracion, tipo, cupo);
 
@@ -75,18 +75,19 @@ public class FileManager {
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
 				String datos[] = linea.split("-");
-				String tipoPromocion = datos[0];
+				String tipoPromocion = datos[1];
 
 				if (tipoPromocion.equals("Descuento")) {
-					String nombrePack = datos[1];
-					double porcentajeDescuento = Double.parseDouble(datos[2]);
-					int cantAtracciones = Integer.parseInt(datos[3]);
+					Tipo tipo = Tipo.valueOf(datos[0]);
+					String nombrePack = datos[2];
+					double porcentajeDescuento = Double.parseDouble(datos[3]);
+					int cantAtracciones = Integer.parseInt(datos[4]);
 
 					LinkedList<Atraccion> atraccionesDescuento = new LinkedList<Atraccion>();
 
 					for (int i = 0; i < cantAtracciones; i++) {
 
-						String nombreAtraccion = datos[4 + i];
+						String nombreAtraccion = datos[5 + i];
 
 						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
@@ -95,22 +96,23 @@ public class FileManager {
 						}
 					}
 
-					PromocionDescuento pd = new PromocionDescuento(tipoPromocion, nombrePack, atraccionesDescuento,
+					PromocionDescuento pd = new PromocionDescuento(tipo, tipoPromocion, nombrePack, atraccionesDescuento,
 							porcentajeDescuento);
 
 					if (!promociones.contains(pd))
 						promociones.add(pd);
 
 				} else if (tipoPromocion.equals("Absoluta")) {
-					String nombrePack = datos[1];
-					double precio = Double.parseDouble(datos[2]);
-					int cantAtracciones = Integer.parseInt(datos[3]);
+					Tipo tipo = Tipo.valueOf(datos[0]);
+					String nombrePack = datos[2];
+					double precio = Double.parseDouble(datos[3]);
+					int cantAtracciones = Integer.parseInt(datos[4]);
 
 					LinkedList<Atraccion> atraccionesAbsolutas = new LinkedList<Atraccion>();
 
 					for (int i = 0; i < cantAtracciones; i++) {
 
-						String nombreAtraccion = datos[4 + i];
+						String nombreAtraccion = datos[5 + i];
 
 						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
@@ -119,21 +121,22 @@ public class FileManager {
 						}
 					}
 
-					PromocionAbsoluta pa = new PromocionAbsoluta(tipoPromocion, nombrePack, atraccionesAbsolutas,
+					PromocionAbsoluta pa = new PromocionAbsoluta(tipo, tipoPromocion, nombrePack, atraccionesAbsolutas,
 							precio);
 
 					if (!promociones.contains(pa))
 						promociones.add(pa);
 
 				} else {
-					String nombrePack = datos[1];
-					int cantAtracciones = Integer.parseInt(datos[3]);
+					Tipo tipo = Tipo.valueOf(datos[0]);
+					String nombrePack = datos[2];
+					int cantAtracciones = Integer.parseInt(datos[4]);
 
 					LinkedList<Atraccion> atraccionesAxB = new LinkedList<Atraccion>();
 
 					for (int i = 0; i < cantAtracciones; i++) {
 
-						String nombreAtraccion = datos[4 + i];
+						String nombreAtraccion = datos[5 + i];
 
 						for (Atraccion atraccionActual : atracciones) {
 							if (atraccionActual.getNombre().equals(nombreAtraccion)) {
@@ -143,7 +146,7 @@ public class FileManager {
 						}
 					}
 
-					PromocionAxB pp = new PromocionAxB(tipoPromocion, nombrePack, atraccionesAxB);
+					PromocionAxB pp = new PromocionAxB(tipo, tipoPromocion, nombrePack, atraccionesAxB);
 
 					if (!promociones.contains(pp))
 						promociones.add(pp);

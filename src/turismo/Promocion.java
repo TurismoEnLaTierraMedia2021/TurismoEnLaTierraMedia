@@ -3,6 +3,7 @@ package turismo;
 import java.util.LinkedList;
 
 public abstract class Promocion extends Vendible {
+	protected Tipo tipo;
 	protected String tipoPromocion;
 	protected String nombrePack;
 	protected LinkedList<Atraccion> atracciones;
@@ -78,9 +79,6 @@ public abstract class Promocion extends Vendible {
 		return hayLugar;
 	}
 
-	public TipoDeAtraccion getTipoDeAtraccion() {
-		return tipoDeAtraccion;
-	}
 
 	@Override
 	public int getCupo() {
@@ -93,5 +91,10 @@ public abstract class Promocion extends Vendible {
 
 	public boolean esPromo() {
 		return true;
+	}
+	
+	@Override
+	public Tipo getTipo() {
+		return tipo;
 	}
 }

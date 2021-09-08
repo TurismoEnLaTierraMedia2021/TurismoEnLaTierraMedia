@@ -4,8 +4,9 @@ import java.util.LinkedList;
 
 public class PromocionDescuento extends Promocion {
 
-	public PromocionDescuento(String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
+	public PromocionDescuento(Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
 			double porcentajeDescuento) {
+		this.tipo = tipo;
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;
 		this.atracciones = atracciones;
@@ -26,7 +27,7 @@ public class PromocionDescuento extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionDescuento [tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones="
+		return "PromocionDescuento [" + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones="
 				+ this.atraccionesAString() + "porcentajeDescuento=" + porcentajeDescuento + "]";
 	}
 

@@ -4,9 +4,9 @@ public class Usuario {
 	private String nombre = "";
 	private double presupuesto;
 	private double tiempoDisponible;
-	private TipoDeAtraccion tipoDeAtraccion;
+	private Tipo tipoDeAtraccion;
 
-	public Usuario(String nombre, double presupuesto, double tiempoDisponible, TipoDeAtraccion tipoDeAtraccion) {
+	public Usuario(String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
@@ -49,7 +49,7 @@ public class Usuario {
 		return tiempoDisponible;
 	}
 
-	public TipoDeAtraccion getTipoDeAtraccion() {
+	public Tipo getTipoDeAtraccion() {
 		return tipoDeAtraccion;
 	}
 

@@ -91,4 +91,7 @@ public abstract class Promocion extends Vendible {
 		return cupo;
 	}
 
+	public boolean esPromo() {
+		return true;
+	}
 }

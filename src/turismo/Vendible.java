@@ -37,6 +37,9 @@ public abstract class Vendible {
 		return cupo;
 	}
 
+	public boolean esPromo() {
+		return false;
+	}
 	
 	
 }

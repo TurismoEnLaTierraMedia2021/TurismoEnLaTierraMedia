@@ -32,7 +32,7 @@ public class Atraccion extends Vendible {
 	@Override
 	public String toString() {
 		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
-				+ tipo + ", cupo=" + cupo + "]";
+				+ tipo + ", cupo=" + cupo + "]\n";
 	}
 
 	public String getNombre() {

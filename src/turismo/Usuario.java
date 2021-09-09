@@ -1,10 +1,13 @@
 package turismo;
 
+import java.util.LinkedList;
+
 public class Usuario {
 	private String nombre = "";
 	private double presupuesto;
 	private double tiempoDisponible;
 	private Tipo tipoDeAtraccion;
+	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
 	public Usuario(String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion) {
 		this.nombre = nombre;
@@ -16,13 +19,15 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
-				+ ", tipoDeAtraccion=" + tipoDeAtraccion + "]";
+				+ ", tipoDeAtraccion=" + tipoDeAtraccion + "]\n";
 	}
 
 	public void comprarVendible(Vendible vendible) {
+		
 		this.presupuesto -= vendible.getCosto();
 		this.tiempoDisponible -= vendible.getDuracion();
 		vendible.comprar();
+		vendiblesComprados.add(vendible);
 	}
 //Para borrar	
 //	public void comprarAtraccion(Atraccion atraccion) {
@@ -53,4 +58,18 @@ public class Usuario {
 		return tipoDeAtraccion;
 	}
 
+	public void ofertarVendible(Vendible v) {
+		if(puedeComprar(v)) {
+			this.comprarVendible(v);
+		}	
+		
+	}
+
+	public boolean puedeComprar(Vendible v) {
+		return v.getCosto() <= this.getPresupuesto() && v.getDuracion() <= this.getTiempoDisponible();
+	}
+
+	public boolean yaLoCompro(Vendible v) {
+		return false;
+	}
 }

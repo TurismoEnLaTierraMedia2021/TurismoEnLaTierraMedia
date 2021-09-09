@@ -27,8 +27,8 @@ public class PromocionDescuento extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionDescuento [" + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones="
-				+ this.atraccionesAString() + "porcentajeDescuento=" + porcentajeDescuento + "]";
+		return "PromocionDescuento [Valor= " + this.getCosto() + ", " + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones="
+				+ this.atraccionesAString() + "porcentajeDescuento=" + porcentajeDescuento + "]\n";
 	}
 
 }

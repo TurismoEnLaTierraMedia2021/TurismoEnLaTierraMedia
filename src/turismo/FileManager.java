@@ -162,4 +162,12 @@ public class FileManager {
 		return promociones;
 	}
 
+	public static LinkedList<Vendible> getVendibles() {
+		List<Atraccion> atracciones = FileManager.getAtracciones();
+		List<Promocion> promociones = FileManager.getPromociones(atracciones);
+		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
+		vendibles.addAll(atracciones);
+		vendibles.addAll(promociones);
+		return vendibles;
+	}
 }

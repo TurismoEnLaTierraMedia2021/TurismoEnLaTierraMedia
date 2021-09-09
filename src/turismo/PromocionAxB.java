@@ -27,7 +27,7 @@ public class PromocionAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		return "PromocionAxB [" + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "gratis= "+ atracciones.get(atracciones.size()-1).getNombre() + "]";
+		return "PromocionAxB [Valor= " + this.getCosto() + ", " + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "gratis= "+ atracciones.get(atracciones.size()-1).getNombre() + "]\n";
 	}
 	
 }

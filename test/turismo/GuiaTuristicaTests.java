@@ -2,6 +2,7 @@ package turismo;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
@@ -89,5 +90,16 @@ public class GuiaTuristicaTests {
 		assertEquals(usuarios.get(0).getTipoDeAtraccion(), atracciones.get(0).getTipo());
 	}
 	
+	@Test
+	public void listaVendible() {
+		//hacer una lista igual al resultado para poder compararlo.
+		
+		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
+		vendibles.addAll(atracciones);
+		vendibles.addAll(promociones);
+		System.out.println(vendibles);
+		vendibles.sort(new Comparador(Tipo.AVENTURA));
+		System.out.println(vendibles);
+	}
 
 }

@@ -22,6 +22,7 @@ public class GuiaTuristica {
 		vendibles.sort(new Comparador(usuario.getTipoDeAtraccion()));
 		// al usuario tengo que ofrecerle los vendibles
 		// no ofertar vendible sin cupo
+		// no ofertar algo ya comprado
 		for (Vendible v : vendibles) {
 			if (!usuario.yaLoCompro(v)) {
 				usuario.ofertarVendible(v);

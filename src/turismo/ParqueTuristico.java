@@ -2,10 +2,8 @@ package turismo;
 
 import java.util.LinkedList;
 
-
 public class ParqueTuristico {
-	
-	
+
 	public static void main(String[] args) {
 		LinkedList<Usuario> usuarios = FileManager.getUsuarios();
 		LinkedList<Vendible> vendibles = FileManager.getVendibles();

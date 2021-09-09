@@ -16,25 +16,6 @@ public class Atraccion extends Vendible {
 		this.cupo = cupo;
 	}
 
-	@Override
-	public void comprar() {
-		if(this.hayCupo()) {
-			this.cupo -= 1;
-		}	
-	}
-	
-	@Override
-	public boolean hayCupo() {
-
-		return (this.getCupo() != 0);
-	}
-
-	@Override
-	public String toString() {
-		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
-				+ tipo + ", cupo=" + cupo + "]\n";
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -46,14 +27,33 @@ public class Atraccion extends Vendible {
 	public double getDuracion() {
 		return duracion;
 	}
-	
+
+	public int getCupo() {
+		return cupo;
+	}
+
 	@Override
 	public Tipo getTipo() {
 		return tipo;
 	}
 
-	public int getCupo() {
-		return cupo;
+	@Override
+	public void comprar() {
+		if (this.hayCupo()) {
+			this.cupo -= 1;
+		}
+	}
+
+	@Override
+	public boolean hayCupo() {
+
+		return (this.getCupo() != 0);
+	}
+
+	@Override
+	public String toString() {
+		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
+				+ tipo + ", cupo=" + cupo + "]\n";
 	}
 
 }

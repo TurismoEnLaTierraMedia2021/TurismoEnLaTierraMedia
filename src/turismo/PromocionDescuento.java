@@ -25,14 +25,14 @@ public class PromocionDescuento extends Promocion {
 		}
 
 		return BigDecimal.valueOf(((total * (1 - this.getPorcentajeDescuento() / 100))))
-			    .setScale(3, RoundingMode.HALF_UP)
-			    .doubleValue();
+				.setScale(3, RoundingMode.HALF_UP).doubleValue();
 	}
 
 	@Override
 	public String toString() {
-		return "PromocionDescuento [Valor= " + this.getCosto() + ", " + tipo + ", tipoPromocion=" + tipoPromocion + ", nombrePack=" + nombrePack + ", Atracciones="
-				+ this.atraccionesAString() + "porcentajeDescuento=" + porcentajeDescuento + "]\n";
+		return "PromocionDescuento [Valor= " + this.getCosto() + ", " + tipo + ", tipoPromocion=" + tipoPromocion
+				+ ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "porcentajeDescuento="
+				+ porcentajeDescuento + "]\n";
 	}
 
 }

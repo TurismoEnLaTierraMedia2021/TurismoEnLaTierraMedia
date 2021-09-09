@@ -18,22 +18,6 @@ public abstract class Promocion extends Vendible {
 		return this.calcularDescuento();
 	}
 
-	public String atraccionesAString() {
-		String stringFinal = "";
-
-		for (Atraccion atraccion : atracciones) {
-			stringFinal += atraccion.getNombre() + ", ";
-		}
-		return stringFinal;
-	}
-
-	@Override
-	public void comprar() {
-		for (Atraccion atraccion : atracciones) {
-			atraccion.comprar();
-		}
-	}
-
 	public String getTipoPromocion() {
 		return tipoPromocion;
 	}
@@ -54,6 +38,23 @@ public abstract class Promocion extends Vendible {
 		return precio;
 	}
 
+	public String atraccionesAString() {
+		String stringFinal = "";
+
+		for (Atraccion atraccion : atracciones) {
+			stringFinal += atraccion.getNombre() + ", ";
+		}
+		return stringFinal;
+	}
+
+	@Override
+	public void comprar() {
+		for (Atraccion atraccion : atracciones) {
+			atraccion.comprar();
+		}
+	}
+
+	@Override
 	public String getNombre() {
 		return nombre;
 	}
@@ -79,7 +80,6 @@ public abstract class Promocion extends Vendible {
 		return hayLugar;
 	}
 
-
 	@Override
 	public int getCupo() {
 		int cupo = 0;
@@ -89,10 +89,11 @@ public abstract class Promocion extends Vendible {
 		return cupo;
 	}
 
+	@Override
 	public boolean esPromo() {
 		return true;
 	}
-	
+
 	@Override
 	public Tipo getTipo() {
 		return tipo;

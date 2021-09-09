@@ -96,8 +96,8 @@ public class FileManager {
 						}
 					}
 
-					PromocionDescuento pd = new PromocionDescuento(tipo, tipoPromocion, nombrePack, atraccionesDescuento,
-							porcentajeDescuento);
+					PromocionDescuento pd = new PromocionDescuento(tipo, tipoPromocion, nombrePack,
+							atraccionesDescuento, porcentajeDescuento);
 
 					if (!promociones.contains(pd))
 						promociones.add(pd);

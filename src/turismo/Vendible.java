@@ -11,10 +11,11 @@ public abstract class Vendible {
 	protected LinkedList<Atraccion> atracciones;
 
 	public boolean hayCupo() {
-		return false;		
+		return false;
 	}
+
 	public void comprar() {
-		
+
 	}
 
 	public double getDuracion() {
@@ -40,6 +41,5 @@ public abstract class Vendible {
 	public boolean esPromo() {
 		return false;
 	}
-	
-	
+
 }

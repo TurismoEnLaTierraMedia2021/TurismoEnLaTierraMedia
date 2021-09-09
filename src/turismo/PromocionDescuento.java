@@ -1,5 +1,7 @@
 package turismo;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 
 public class PromocionDescuento extends Promocion {
@@ -22,7 +24,9 @@ public class PromocionDescuento extends Promocion {
 
 		}
 
-		return (total * (1 - this.getPorcentajeDescuento() / 100));
+		return BigDecimal.valueOf(((total * (1 - this.getPorcentajeDescuento() / 100))))
+			    .setScale(3, RoundingMode.HALF_UP)
+			    .doubleValue();
 	}
 
 	@Override

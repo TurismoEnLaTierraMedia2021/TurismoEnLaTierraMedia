@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 public class FileManager {
 
 	public static LinkedList<Usuario> getUsuarios() {
@@ -170,4 +172,31 @@ public class FileManager {
 		vendibles.addAll(promociones);
 		return vendibles;
 	}
+	
+
+	
+	public static void generarItinerario(LinkedList<Usuario> usuarios) {
+		try {
+			File f = new File("Itinerario.txt");
+			PrintWriter pw;
+			pw = new PrintWriter(f);
+			for(Usuario usuario: usuarios) {
+				LinkedList<Vendible> vendibles = usuario.getVendiblesComprados();
+				pw.println(usuario.getNombre().toString()+"\n");
+				pw.println("Monedas Gastadas : " + usuario.getMontoTotal());
+				pw.println("Tiempo Necesario : " + usuario.getTiempoTotal() +"\n");		
+				pw.println("Atracciones compradas: " + "\n");
+				for(Vendible v : vendibles) {
+					pw.println(v.toString());
+				}	
+				pw.println("\n");	
+				
+			}	
+			pw.close();
+		} catch (FileNotFoundException e) {
+				e.printStackTrace();
+		}	
+	}
+	
+	
 }

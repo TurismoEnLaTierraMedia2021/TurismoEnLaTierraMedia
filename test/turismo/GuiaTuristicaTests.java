@@ -12,6 +12,7 @@ public class GuiaTuristicaTests {
 	List<Usuario> usuarios;
 	List<Atraccion> atracciones;
 	List<Promocion> promociones;
+	List<Vendible> vendibles;
 
 	@Before
 	public void setUp() {
@@ -20,6 +21,8 @@ public class GuiaTuristicaTests {
 		atracciones = FileManager.getAtracciones();
 
 		promociones = FileManager.getPromociones(atracciones);
+		
+		vendibles = FileManager.getVendibles();
 	}
 
 	@Test
@@ -79,9 +82,24 @@ public class GuiaTuristicaTests {
 		assertEquals(14, atracciones.get(4).getCupo(), 0.01);
 		assertEquals(31, atracciones.get(6).getCupo(), 0.01);
 		assertEquals(0.5, usuarios.get(0).getTiempoDisponible(), 0.01);
-
 	}
 
+	@Test
+	public void UsuarioTest() {
+		assertTrue(usuarios.get(4).puedeComprar(vendibles.get(0)));
+		
+		usuarios.get(4).comprarVendible(vendibles.get(2));
+		 
+		assertEquals(97, usuarios.get(4).getPresupuesto(), 0.01);
+		assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(2)));
+		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(9)));
+		usuarios.get(4).comprarVendible(vendibles.get(10));
+		//assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(1)));
+		//assertFalse(usuarios.get(4).puedeComprar(vendibles.get(1)));
+		//assertEquals(87, usuarios.get(4).getPresupuesto(), 0.01);
+		//assertFalse(usuarios.get(4).puedeComprar(vendibles.get(6)));
+	}
+	
 	@Test
 	public void comparadorTiposTest() {
 		assertEquals(Tipo.AVENTURA, promociones.get(0).getTipo());
@@ -89,17 +107,18 @@ public class GuiaTuristicaTests {
 		assertEquals(promociones.get(0).getTipo(), atracciones.get(0).getTipo());
 		assertEquals(usuarios.get(0).getTipoDeAtraccion(), atracciones.get(0).getTipo());
 	}
+	
 
-	@Test
-	public void listaVendible() {
-		// hacer una lista igual al resultado para poder compararlo.
-
-		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
-		vendibles.addAll(atracciones);
-		vendibles.addAll(promociones);
-		System.out.println(vendibles);
-		vendibles.sort(new Comparador(Tipo.AVENTURA));
-		System.out.println(vendibles);
-	}
+//	@Test
+//	public void listaVendible() {
+//		// hacer una lista igual al resultado para poder compararlo.
+//
+//		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
+//		vendibles.addAll(atracciones);
+//		vendibles.addAll(promociones);
+//		System.out.println(vendibles);
+//		vendibles.sort(new Comparador(Tipo.AVENTURA));
+//		System.out.println(vendibles);
+//	}
 
 }

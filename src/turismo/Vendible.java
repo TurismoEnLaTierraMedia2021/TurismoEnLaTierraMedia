@@ -15,7 +15,6 @@ public abstract class Vendible {
 	}
 
 	public void comprar() {
-
 	}
 
 	public double getDuracion() {
@@ -40,6 +39,10 @@ public abstract class Vendible {
 
 	public boolean esPromo() {
 		return false;
+	}
+	
+	public LinkedList<Atraccion> getAtracciones() {
+		return atracciones;
 	}
 
 }

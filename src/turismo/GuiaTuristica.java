@@ -1,37 +1,68 @@
 package turismo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class GuiaTuristica {
 	LinkedList<Usuario> usuarios;
 	LinkedList<Vendible> vendibles;
+	LinkedList<Vendible> vendiblesAOfertar;
+	int i;
 
 	public GuiaTuristica(LinkedList<Usuario> usuarios, LinkedList<Vendible> vendibles) {
 		this.usuarios = usuarios;
 		this.vendibles = vendibles;
 	}
 
-	public void ofertarVendibles() {
+	public void ofertarVendibles() throws IOException {
 		for (Usuario u : usuarios) {
+			System.out.println(u.getNombre() + " :");
+			System.out.println("\n");
 			this.ofertarSinParar(u);
+			System.out.println("Itinerario:");
+			System.out.println(u.getVendiblesComprados());
+			System.out.println("Monedas Gastadas : " + u.getMontoTotal());
+			System.out.println("Tiempo Necesario : " + u.getTiempoTotal());
+			System.out.println("\n");
+			System.out.println(" ----------------------- ");
+			System.out.println("\n");
 		}
+		
 	}
 
-	public void ofertarSinParar(Usuario usuario) {
+	public void ofertarSinParar(Usuario usuario) throws IOException{
 		// ordenar la lista de vendibles segun su preferencia
 		vendibles.sort(new Comparador(usuario.getTipoDeAtraccion()));
 		// al usuario tengo que ofrecerle los vendibles
 		// no ofertar vendible sin cupo
 		// no ofertar algo ya comprado
 		for (Vendible v : vendibles) {
-			if (!usuario.yaLoCompro(v)) {
-				usuario.ofertarVendible(v);
+			if (usuario.puedeComprar(v)) {
+				System.out.println("Desea comprar? Y1/N2");
+				System.out.println(v);
+
+				InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+				BufferedReader buffer = new BufferedReader(capturarTeclado);
+				String strNumero = buffer.readLine();
+				Integer numero = Integer.parseInt(strNumero);
+				
+				if(numero == 1) {
+					usuario.comprarVendible(v);
+				}
+				
 			}
-
 		}
-
 	}
+
 }
+
+
+
+
 
 /*
  * import java.io.BufferedReader; import java.io.IOException; import

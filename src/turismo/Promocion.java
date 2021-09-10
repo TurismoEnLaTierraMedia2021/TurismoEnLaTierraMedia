@@ -26,6 +26,7 @@ public abstract class Promocion extends Vendible {
 		return nombrePack;
 	}
 
+	@Override
 	public LinkedList<Atraccion> getAtracciones() {
 		return atracciones;
 	}

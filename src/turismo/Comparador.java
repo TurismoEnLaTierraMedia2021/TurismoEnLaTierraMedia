@@ -9,9 +9,8 @@ public class Comparador implements Comparator<Vendible> {
 
 	public Comparador(Tipo preferenciaUsuario) {
 		this.preferenciaUsuario = preferenciaUsuario;
-
 	}
-
+	
 	@Override
 	public int compare(Vendible o1, Vendible o2) {
 

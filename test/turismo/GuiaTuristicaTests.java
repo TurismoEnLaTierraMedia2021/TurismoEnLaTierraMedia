@@ -94,10 +94,10 @@ public class GuiaTuristicaTests {
 		assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(2)));
 		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(9)));
 		usuarios.get(4).comprarVendible(vendibles.get(10));
-		//assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(1)));
-		//assertFalse(usuarios.get(4).puedeComprar(vendibles.get(1)));
-		//assertEquals(87, usuarios.get(4).getPresupuesto(), 0.01);
-		//assertFalse(usuarios.get(4).puedeComprar(vendibles.get(6)));
+		assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(1)));
+		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(1)));
+		assertEquals(87, usuarios.get(4).getPresupuesto(), 0.01);
+		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(6)));
 	}
 	
 	@Test

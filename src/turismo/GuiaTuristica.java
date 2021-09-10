@@ -40,21 +40,26 @@ public class GuiaTuristica {
 		// al usuario tengo que ofrecerle los vendibles
 		// no ofertar vendible sin cupo
 		// no ofertar algo ya comprado
-		for (Vendible v : vendibles) {
-			if (usuario.puedeComprar(v)) {
-				System.out.println("Desea comprar? Y1/N2");
-				System.out.println(v);
+		while (usuario.getPresupuesto() > 3 && usuario.getTiempoDisponible() > 4 || usuario.getPresupuesto() > 35 && usuario.getTiempoDisponible() > 1) {
+			
+			for (Vendible v : vendibles) {
+				if (usuario.puedeComprar(v)) {
+					System.out.println("Desea comprar? Y1/N2");
+					System.out.println(v);
 
-				InputStreamReader capturarTeclado = new InputStreamReader(System.in);
-				BufferedReader buffer = new BufferedReader(capturarTeclado);
-				String strNumero = buffer.readLine();
-				Integer numero = Integer.parseInt(strNumero);
-				
-				if(numero == 1) {
-					usuario.comprarVendible(v);
+					InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+					BufferedReader buffer = new BufferedReader(capturarTeclado);
+					String strNumero = buffer.readLine();
+					Integer numero = Integer.parseInt(strNumero);
+					
+					if(numero == 1) {
+						usuario.comprarVendible(v);
+					}
+					
 				}
-				
 			}
+			
+			
 		}
 	}
 

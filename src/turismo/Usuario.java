@@ -75,7 +75,7 @@ public class Usuario {
 				}
 				for(Vendible vendibleComp : vendiblesComprados) {
 					if(vendibleComp.esPromo()) {
-						if (vendibleComp.getAtracciones().contains(vendible) ) {
+						if (vendibleComp.getAtracciones().contains(vendible)) {
 							compro = true;
 							break;
 						}
@@ -84,7 +84,12 @@ public class Usuario {
 			}			
 		}else {
 			for (Vendible vendible : vendiblesComprados) {
-				if (vendible == v ) {
+				if (vendible.esPromo()) {
+					if (vendible.getAtracciones().contains(v)) {
+						compro = true;
+						break;
+					}
+				}else if (vendible == v ) {
 					compro = true;
 				}
 			}

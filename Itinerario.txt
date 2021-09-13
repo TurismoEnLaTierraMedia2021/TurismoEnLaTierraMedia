@@ -1,0 +1,65 @@
+Eowyn
+
+Monedas Gastadas : 10.0
+Tiempo Necesario : 2.0
+
+Atracciones compradas: 
+
+Atraccion [nombre=Moria, costo=10.0, duracion=2.0, tipoDeAtraccion=AVENTURA, cupo=4]
+
+
+
+Gandalf
+
+Monedas Gastadas : 10.0
+Tiempo Necesario : 4.5
+
+Atracciones compradas: 
+
+Atraccion [nombre=Minas Tirith, costo=5.0, duracion=2.5, tipoDeAtraccion=PAISAJE, cupo=22]
+
+Atraccion [nombre=Abismo de Helm, costo=5.0, duracion=2.0, tipoDeAtraccion=PAISAJE, cupo=13]
+
+
+
+Sam
+
+Monedas Gastadas : 35.0
+Tiempo Necesario : 1.0
+
+Atracciones compradas: 
+
+Atraccion [nombre=Lothlorien, costo=35.0, duracion=1.0, tipoDeAtraccion=DEGUSTACION, cupo=28]
+
+
+
+Galadriel
+
+Monedas Gastadas : 17.0
+Tiempo Necesario : 5.5
+
+Atracciones compradas: 
+
+Atraccion [nombre=Erebor, costo=12.0, duracion=3.0, tipoDeAtraccion=PAISAJE, cupo=30]
+
+Atraccion [nombre=Minas Tirith, costo=5.0, duracion=2.5, tipoDeAtraccion=PAISAJE, cupo=22]
+
+
+
+UsuarioPrueba
+
+Monedas Gastadas : 78.4
+Tiempo Necesario : 24.0
+
+Atracciones compradas: 
+
+PromocionAxB [Valor= 10.0, PAISAJE, tipoPromocion=AxB, nombrePack=Pack paisajes, Atracciones=Minas Tirith, Abismo de Helm, Erebor, gratis= Erebor]
+
+PromocionAbsoluta [Valor= 36.0, DEGUSTACION, tipoPromocion=Absoluta, nombrePack=Pack degustacion, Atracciones=Lothlorien, La Comarca, precio=36.0]
+
+PromocionDescuento [Valor= 22.4, AVENTURA, tipoPromocion=Descuento, nombrePack=Pack aventura, Atracciones=Bosque Negro, Mordor, porcentajeDescuento=20.0]
+
+Atraccion [nombre=Moria, costo=10.0, duracion=2.0, tipoDeAtraccion=AVENTURA, cupo=4]
+
+
+

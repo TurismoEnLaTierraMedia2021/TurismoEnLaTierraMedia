@@ -1,0 +1,14 @@
+Galadriel
+
+Monedas Gastadas : 44.35
+Tiempo Necesario : 6.0
+
+Itinerario: 
+
+Promocion PAISAJE [Valor: 9.35, Tiempo necesario: 5.0, Tipo de promocion:Descuento, Nombre del pack: Pack hotSale,
+	 Atracciones:Erebor, Abismo de Helm]
+
+Atraccion [nombre=Lothlorien, costo=35.0, duracion=1.0, tipoDeAtraccion=DEGUSTACION, cupo=27]
+
+
+

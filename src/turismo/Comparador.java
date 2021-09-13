@@ -4,13 +4,11 @@ import java.util.Comparator;
 
 public class Comparador implements Comparator<Vendible> {
 	private Tipo preferenciaUsuario;
-	private double presupuesto;
-	private double tiempoDisponible;
 
 	public Comparador(Tipo preferenciaUsuario) {
 		this.preferenciaUsuario = preferenciaUsuario;
 	}
-	
+
 	@Override
 	public int compare(Vendible o1, Vendible o2) {
 

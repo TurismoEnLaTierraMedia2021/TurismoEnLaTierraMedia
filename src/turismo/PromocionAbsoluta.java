@@ -20,11 +20,4 @@ public class PromocionAbsoluta extends Promocion {
 
 	}
 
-	@Override
-	public String toString() {
-		return "PromocionAbsoluta [Valor= " + this.getCosto() + ", " + tipo + ", tipoPromocion=" + tipoPromocion
-				+ ", nombrePack=" + nombrePack + ", Atracciones=" + this.atraccionesAString() + "precio=" + precio
-				+ "]\n";
-	}
-
 }

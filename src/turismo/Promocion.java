@@ -43,7 +43,11 @@ public abstract class Promocion extends Vendible {
 		String stringFinal = "";
 
 		for (Atraccion atraccion : atracciones) {
-			stringFinal += atraccion.getNombre() + ", ";
+			if (atraccion == atracciones.get(atracciones.size() - 1)) {
+				stringFinal += atraccion.getNombre();
+			} else {
+				stringFinal += atraccion.getNombre() + ", ";
+			}
 		}
 		return stringFinal;
 	}
@@ -98,5 +102,12 @@ public abstract class Promocion extends Vendible {
 	@Override
 	public Tipo getTipo() {
 		return tipo;
+	}
+
+	@Override
+	public String toString() {
+		return "Promocion " + tipo + " [Valor: " + this.getCosto() + ", Tiempo necesario: " + this.getDuracion()
+				+ ", Tipo de promocion:" + tipoPromocion + ", Nombre del pack: " + nombrePack + ",\n\t Atracciones:"
+				+ this.atraccionesAString() + "]\n";
 	}
 }

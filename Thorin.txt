@@ -1,0 +1,22 @@
+Thorin
+
+Monedas Gastadas : 81.0
+Tiempo Necesario : 29.0
+
+Itinerario: 
+
+Promocion PAISAJE [Valor: 10.0, Tiempo necesario: 7.5, Tipo de promocion:AxB, Nombre del pack: Pack paisajes,
+	 Atracciones:Minas Tirith, Abismo de Helm, Erebor]
+	 [Atraccion gratis: Erebor]
+
+Promocion DEGUSTACION [Valor: 38.0, Tiempo necesario: 12.5, Tipo de promocion:AxB, Nombre del pack: Pack festin,
+	 Atracciones:La Comarca, Lothlorien, Taberna Pony Pisador]
+	 [Atraccion gratis: Taberna Pony Pisador]
+
+Promocion AVENTURA [Valor: 30.0, Tiempo necesario: 5.0, Tipo de promocion:Absoluta, Nombre del pack: Pack locuras,
+	 Atracciones:Moria, Mordor]
+
+Atraccion [nombre=Bosque Negro, costo=3.0, duracion=4.0, tipoDeAtraccion=AVENTURA, cupo=9]
+
+
+

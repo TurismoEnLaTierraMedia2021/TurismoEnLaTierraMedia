@@ -9,11 +9,7 @@ public class ParqueTuristico {
 		LinkedList<Usuario> usuarios = FileManager.getUsuarios();
 		LinkedList<Vendible> vendibles = FileManager.getVendibles();
 		GuiaTuristica guia = new GuiaTuristica(usuarios, vendibles);
-		//System.out.println(usuarios);
-		//vendibles.sort(new Comparador(Tipo.PAISAJE));
-		//System.out.println(vendibles);
-		//guia.ofertarVendibles();
-		guia.ofertarVendibles();	
+		guia.ofertarVendibles();
 		FileManager.generarItinerario(usuarios);
 	}
 }

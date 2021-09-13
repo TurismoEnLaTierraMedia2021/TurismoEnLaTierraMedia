@@ -2,9 +2,7 @@ package turismo;
 
 import static org.junit.Assert.*;
 
-import java.util.LinkedList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +19,7 @@ public class GuiaTuristicaTests {
 		atracciones = FileManager.getAtracciones();
 
 		promociones = FileManager.getPromociones(atracciones);
-		
+
 		vendibles = FileManager.getVendibles();
 	}
 
@@ -85,21 +83,21 @@ public class GuiaTuristicaTests {
 	}
 
 	@Test
-	public void UsuarioTest() {
+	public void thorinTest() {
 		assertTrue(usuarios.get(4).puedeComprar(vendibles.get(0)));
-		
+
 		usuarios.get(4).comprarVendible(vendibles.get(2));
-		 
+
 		assertEquals(97, usuarios.get(4).getPresupuesto(), 0.01);
 		assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(2)));
-		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(9)));
-		usuarios.get(4).comprarVendible(vendibles.get(10));
+		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(10)));
+		usuarios.get(4).comprarVendible(vendibles.get(11));
 		assertTrue(usuarios.get(4).yaLoCompro(vendibles.get(1)));
 		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(1)));
 		assertEquals(87, usuarios.get(4).getPresupuesto(), 0.01);
 		assertFalse(usuarios.get(4).puedeComprar(vendibles.get(6)));
 	}
-	
+
 	@Test
 	public void comparadorTiposTest() {
 		assertEquals(Tipo.AVENTURA, promociones.get(0).getTipo());
@@ -107,18 +105,5 @@ public class GuiaTuristicaTests {
 		assertEquals(promociones.get(0).getTipo(), atracciones.get(0).getTipo());
 		assertEquals(usuarios.get(0).getTipoDeAtraccion(), atracciones.get(0).getTipo());
 	}
-	
-
-//	@Test
-//	public void listaVendible() {
-//		// hacer una lista igual al resultado para poder compararlo.
-//
-//		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
-//		vendibles.addAll(atracciones);
-//		vendibles.addAll(promociones);
-//		System.out.println(vendibles);
-//		vendibles.sort(new Comparador(Tipo.AVENTURA));
-//		System.out.println(vendibles);
-//	}
 
 }

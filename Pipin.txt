@@ -1,0 +1,18 @@
+Pipin
+
+Monedas Gastadas : 43.0
+Tiempo Necesario : 16.5
+
+Itinerario: 
+
+Promocion AVENTURA [Valor: 30.0, Tiempo necesario: 5.0, Tipo de promocion:Absoluta, Nombre del pack: Pack locuras,
+	 Atracciones:Moria, Mordor]
+
+Atraccion [nombre=Bosque Negro, costo=3.0, duracion=4.0, tipoDeAtraccion=AVENTURA, cupo=9]
+
+Promocion PAISAJE [Valor: 10.0, Tiempo necesario: 7.5, Tipo de promocion:AxB, Nombre del pack: Pack paisajes,
+	 Atracciones:Minas Tirith, Abismo de Helm, Erebor]
+	 [Atraccion gratis: Erebor]
+
+
+

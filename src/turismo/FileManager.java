@@ -11,7 +11,7 @@ public class FileManager {
 		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File("Usuarios"));
+			sc = new Scanner(new File("Usuarios.txt"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
@@ -39,7 +39,7 @@ public class FileManager {
 		LinkedList<Atraccion> atracciones = new LinkedList<Atraccion>();
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File("Atracciones"));
+			sc = new Scanner(new File("Atracciones.txt"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
@@ -70,7 +70,7 @@ public class FileManager {
 		Scanner sc = null;
 
 		try {
-			sc = new Scanner(new File("Promociones"));
+			sc = new Scanner(new File("Promociones.txt"));
 
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();

@@ -1,13 +1,11 @@
 Eowyn
 
-Monedas Gastadas : 8.0
-Tiempo Necesario : 6.5
+Monedas Gastadas : 10.0
+Tiempo Necesario : 2.0
 
 Itinerario: 
 
-Atraccion [nombre=Bosque Negro, costo=3.0, duracion=4.0, tipoDeAtraccion=AVENTURA, cupo=9]
-
-Atraccion [nombre=Minas Tirith, costo=5.0, duracion=2.5, tipoDeAtraccion=PAISAJE, cupo=22]
+Atraccion [nombre=Moria, costo=10.0, duracion=2.0, tipoDeAtraccion=AVENTURA, cupo=3]
 
 
 

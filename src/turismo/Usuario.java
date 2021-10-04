@@ -65,36 +65,14 @@ public class Usuario {
 		vendiblesComprados.add(vendible);
 	}
 
+	
 	public boolean yaLoCompro(Vendible v) {
-		boolean compro = false;
-		if (v.esPromo()) {//aca se fija si las atracciones de la promocion que va a comprar, estan compradas sueltas
-			for (Vendible vendible : v.getAtracciones()) {
-				if (vendiblesComprados.contains(vendible)) {
-					compro = true;
-					break;
-				}
-				for (Vendible vendibleComp : vendiblesComprados) {//aca se fija si estan en las atracciones de las promociones compradas
-					if (vendibleComp.esPromo()) {
-						if (vendibleComp.getAtracciones().contains(vendible)) {
-							compro = true;
-							break;
-						}
-					}
-				}
-			}
-		} else {
-			for (Vendible vendible : vendiblesComprados) {//si entra aca, lo que va a comprar es una atraccion, y se fija si esta dentro de las atracciones de las promociones compradas
-				if (vendible.esPromo()) {
-					if (vendible.getAtracciones().contains(v)) {
-						compro = true;
-						break;
-					}
-				} else if (vendible == v) {//aca compara si la atraccion que va a comprar, fue comprada como atraccion suelta
-					compro = true;
-				}
+		for(Vendible comprado : vendiblesComprados) {
+			if(comprado.esOContiene(v) || v.esOContiene(comprado)) {
+				return true;
 			}
 		}
-		return compro;
+		return false;
 	}
 
 	public LinkedList<Vendible> getVendiblesComprados() {

@@ -44,5 +44,9 @@ public abstract class Vendible {
 	public LinkedList<Atraccion> getAtracciones() {
 		return atracciones;
 	}
+	
+	public boolean esOContiene(Vendible v) {
+		return false;
+	}
 
 }

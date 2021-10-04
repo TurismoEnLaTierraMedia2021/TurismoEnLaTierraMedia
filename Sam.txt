@@ -1,12 +1,11 @@
 Sam
 
-Monedas Gastadas : 36.0
-Tiempo Necesario : 7.5
+Monedas Gastadas : 35.0
+Tiempo Necesario : 1.0
 
 Itinerario: 
 
-Promocion DEGUSTACION [Valor: 36.0, Tiempo necesario: 7.5, Tipo de promocion:Absoluta, Nombre del pack: Pack degustacion,
-	 Atracciones:Lothlorien, La Comarca]
+Atraccion [nombre=Lothlorien, costo=35.0, duracion=1.0, tipoDeAtraccion=DEGUSTACION, cupo=27]
 
 
 

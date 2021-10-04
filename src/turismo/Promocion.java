@@ -110,4 +110,14 @@ public abstract class Promocion extends Vendible {
 				+ ", Tipo de promocion:" + tipoPromocion + ", Nombre del pack: " + nombrePack + ",\n\t Atracciones:"
 				+ this.atraccionesAString() + "]\n";
 	}
+	
+	@Override
+	public boolean esOContiene(Vendible v) {
+		for(Atraccion a : this.atracciones) {
+			if(v.esOContiene(a)) {
+				return true;
+			}	
+		}
+		return false;
+	}
 }

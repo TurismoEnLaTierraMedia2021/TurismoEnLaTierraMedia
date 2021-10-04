@@ -55,5 +55,10 @@ public class Atraccion extends Vendible {
 		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", tipoDeAtraccion="
 				+ tipo + ", cupo=" + cupo + "]\n";
 	}
+	
+	@Override
+	public boolean esOContiene(Vendible v) {
+		return this.equals(v);
+	}
 
 }

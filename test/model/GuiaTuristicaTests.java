@@ -1,10 +1,17 @@
-package turismo;
+package model;
 
 import static org.junit.Assert.*;
 
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+
+import model.Atraccion;
+import model.FileManager;
+import model.Promocion;
+import model.Tipo;
+import model.Usuario;
+import model.Vendible;
 
 public class GuiaTuristicaTests {
 	List<Usuario> usuarios;

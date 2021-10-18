@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/Ariel/Downloads/Google Drive/Argentina Programa/Curso 8 - Workspace/TurismoEnLaTierraMedia/Database/TurismoEnLaTierraMedia.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2094"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,11:mainatracciones"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="atracciones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="159"/><column index="3" value="44"/><column index="4" value="64"/><column index="5" value="40"/><column index="6" value="52"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="promociones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="6" mode="0"/></sort><column_widths><column index="1" value="40"/><column index="2" value="52"/><column index="3" value="132"/><column index="4" value="169"/><column index="5" value="119"/><column index="6" value="144"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="promociones_atracciones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="88"/><column index="3" value="94"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sqlite_sequence" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="80"/><column index="2" value="40"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tipo_de_atracciones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="200"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="usuarios" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="57"/><column index="3" value="52"/><column index="4" value="66"/><column index="5" value="124"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1"></sql><sql name="SQL 2 - Insercion de datos en las tablas">INSERT INTO usuarios (nombre, tipo_id, monedas, tiempo_disponible) VALUES
+ ('Eowyn', 2, 10, 8),
+ ('Gandalf', 1, 100, 5),
+ ('Sam', 3, 36, 8),
+ ('Galadriel', 1, 120, 6),
+ ('Thorin', 1, 100, 40),
+ ('Pipin', 2, 45, 18);
+ 
+ INSERT INTO atracciones (nombre, costo, duracion, cupo, tipo_id) VALUES
+ ('Moria', 10, 2, 6, 2),
+ ('Minas Tirith', 5, 2.5, 25, 1),
+ ('La Comarca', 3, 6.5, 150, 3),
+ ('Mordor', 25, 3, 4, 2),
+ ('Abismo de Helm', 5, 2, 15, 1),
+ ('Lothlorien', 35, 1, 30, 3),
+ ('Erebor', 12, 3, 32, 1),
+ ('Bosque Negro', 3, 4, 12, 2),
+ ('Taberna Pony Pisador', 17, 5, 18, 3);
+
+ INSERT INTO promociones (tipo_id, tipo_de_promocion, nombre_pack, referencia_costo, cantidad_atracciones) VALUES
+ (2, 'Descuento', 'Pack Aventura', 20, 2),
+ (3, 'Absoluta', 'Pack Degustacion', 36, 2),
+ (1, 'AxB', 'Pack Paisajes', 6, 3),
+ (2, 'Absoluta', 'Pack Locuras', 30, 2),
+ (3, 'AxB', 'Pack Festin', 6, 3),
+ (1, 'Descuento', 'Pack hotSale', 45, 2);
+ 
+ INSERT INTO promociones_atracciones (promocion_id, atraccion_id) VALUES
+ (1,8),
+ (1,4),
+ (2,6),
+ (2,3),
+ (3,2),
+ (3,5),
+ (3,7),
+ (4,1),
+ (4,4),
+ (5,3),
+ (5,6),
+ (5,9),
+ (6,7),
+ (6,5);
+ 
+SELECT u.*, t.tipo
+FROM usuarios u
+	INNER JOIN tipo_de_atracciones t ON u.tipo_id = t.id
+WHERE u.tipo_id = 2;
+ </sql><current_tab id="0"/></tab_sql></sqlb_project>

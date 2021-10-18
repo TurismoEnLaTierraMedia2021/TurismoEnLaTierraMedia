@@ -1,4 +1,4 @@
-package turismo;
+package model;
 
 public class Atraccion extends Vendible {
 	private String nombre = "";

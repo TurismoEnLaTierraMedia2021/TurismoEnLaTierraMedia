@@ -1,7 +1,12 @@
-package turismo;
+package app;
 
 import java.io.IOException;
 import java.util.LinkedList;
+
+import model.FileManager;
+import model.GuiaTuristica;
+import model.Usuario;
+import model.Vendible;
 
 public class ParqueTuristico {
 

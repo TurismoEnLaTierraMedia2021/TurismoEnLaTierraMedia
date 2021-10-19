@@ -2,7 +2,7 @@ package dao;
 
 public class DAOFactory {
 
-	public static UsuarioDAO getUserDAO() {
+	public static UsuarioDAO getUsuarioDAO() {
 		return new UsuarioDAOImpl();
 	}
 	

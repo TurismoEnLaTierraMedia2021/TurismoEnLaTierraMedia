@@ -98,14 +98,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //		}
 //	}
 
-	public List<Usuario> buscarTodos() {
+	public LinkedList<Usuario> buscarTodos() {
 		try {
 			String sql = "SELECT * FROM usuarios";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
 			
-			List<Usuario> usuarios = new LinkedList<Usuario>();
+			LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 			while (resultados.next()) {
 				usuarios.add(toUsuario(resultados));
 			}
@@ -117,18 +117,19 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	private Usuario toUsuario(ResultSet resultados) throws SQLException {
-		return new Usuario(resultados.getString(2), resultados.getDouble(4), resultados.getDouble(5), Tipo.valueOf(getTipoById(resultados)));
+		return new Usuario(resultados.getString(2), resultados.getDouble(4), resultados.getDouble(5), 
+				Tipo.valueOf(getTipoById(resultados.getDouble(3))));
 	}
 	
-	public static ResultSet getTipoById(ResultSet resultados) {
+	public String getTipoById(Double id_tipo_atraccion) {
 		try {
-			String sql = "SELECT tipo FROM tipo_de_atracciones t INNER JOIN usuarios u ON t.id = u.? ";
+			String sql = "SELECT tipo FROM tipo_de_atracciones WHERE id = ? ";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setDouble(1, resultados.getDouble(3));
+			statement.setDouble(1, id_tipo_atraccion);
 			ResultSet resultado = statement.executeQuery();
-
-			return resultado;
+			
+			return resultado.getString(1);
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}

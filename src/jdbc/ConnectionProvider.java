@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 	
-	private static String url = "Database\\TurismoEnLaTierraMedia.db";
+	private static String url = "jdbc:sqlite:TurismoEnLaTierraMedia.db";
 	private static Connection connection;
 	
 	public static Connection getConnection() throws SQLException {
@@ -15,4 +15,5 @@ public class ConnectionProvider {
 		}
 		return connection;
 	}
+	
 }

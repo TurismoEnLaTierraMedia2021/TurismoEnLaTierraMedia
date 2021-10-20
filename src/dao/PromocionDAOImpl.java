@@ -38,70 +38,34 @@ public class PromocionDAOImpl implements PromocionDAO {
 	}
 
 	private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones) throws SQLException {
+		LinkedList<Atraccion> atraccionesPromocion = new LinkedList<Atraccion>();
 		String tipoPromocion = resultados.getString(3);
+		Integer id = resultados.getInt(1);
+		Tipo tipo = Tipo.valueOf(resultados.getString(2));
+		String nombrePack = resultados.getString(4);
+		double valor_referencia = resultados.getDouble(5);
+		String datos[] = resultados.getString(7).split(",");
 
-		if (tipoPromocion.equals("Descuento")) {
-			Integer id = resultados.getInt(1);
-			Tipo tipo = Tipo.valueOf(resultados.getString(2));
-			String nombrePack = resultados.getString(4);
-			double porcentajeDescuento = resultados.getDouble(5);
-			
-			LinkedList<Atraccion> atraccionesDescuento = new LinkedList<Atraccion>();
-
-			String datos[] = resultados.getString(7).split(",");
-			for (int i = 0; i < datos.length; i++) {
-				for (Atraccion atraccionActual : atracciones) {
-					if (atraccionActual.getNombre().equals(datos[i])) {
-						atraccionesDescuento.add(atraccionActual);
-					}
+		for (int i = 0; i < datos.length; i++) {
+			for (Atraccion atraccionActual : atracciones) {
+				if (atraccionActual.getNombre().equals(datos[i])) {
+					atraccionesPromocion.add(atraccionActual);
 				}
 			}
+		}
 
-			PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack, atraccionesDescuento,
-					porcentajeDescuento);
-
+		if (tipoPromocion.equals("Descuento")) {
+			PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
+					valor_referencia);
 			return pd;
 
 		} else if (tipoPromocion.equals("Absoluta")) {
-			Integer id = resultados.getInt(1);
-			Tipo tipo = Tipo.valueOf(resultados.getString(2));
-			String nombrePack = resultados.getString(4);
-			double precio = resultados.getDouble(5);
-			
-			LinkedList<Atraccion> atraccionesAbsolutas = new LinkedList<Atraccion>();
-
-			String datos[] = resultados.getString(7).split(",");
-			for (int i = 0; i < datos.length; i++) {
-				for (Atraccion atraccionActual : atracciones) {
-					if (atraccionActual.getNombre().equals(datos[i])) {
-						atraccionesAbsolutas.add(atraccionActual);
-					}
-				}
-			}
-
-			PromocionAbsoluta pa = new PromocionAbsoluta(id, tipo, tipoPromocion, nombrePack, atraccionesAbsolutas,
-					precio);
-
+			PromocionAbsoluta pa = new PromocionAbsoluta(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
+					valor_referencia);
 			return pa;
 
 		} else {
-			Integer id = resultados.getInt(1);
-			Tipo tipo = Tipo.valueOf(resultados.getString(2));
-			String nombrePack = resultados.getString(4);
-			
-			LinkedList<Atraccion> atraccionesAxB = new LinkedList<Atraccion>();
-
-			String datos[] = resultados.getString(7).split(",");
-			for (int i = 0; i < datos.length; i++) {
-				for (Atraccion atraccionActual : atracciones) {
-					if (atraccionActual.getNombre().equals(datos[i])) {
-						atraccionesAxB.add(atraccionActual);
-					}
-				}
-			}
-
-			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesAxB);
-
+			PromocionAxB pp = new PromocionAxB(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion);
 			return pp;
 
 		}

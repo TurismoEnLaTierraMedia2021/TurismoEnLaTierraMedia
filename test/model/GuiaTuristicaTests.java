@@ -2,32 +2,30 @@ package model;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
+import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Atraccion;
-import model.FileManager;
-import model.Promocion;
-import model.Tipo;
-import model.Usuario;
-import model.Vendible;
+import dao.AtraccionDAO;
+import dao.DAOFactory;
+import dao.PromocionDAO;
+import dao.UsuarioDAO;
 
 public class GuiaTuristicaTests {
-	List<Usuario> usuarios;
-	List<Atraccion> atracciones;
-	List<Promocion> promociones;
-	List<Vendible> vendibles;
+	LinkedList<Usuario> usuarios;
+	LinkedList<Atraccion> atracciones;
+	LinkedList<Promocion> promociones;
+	LinkedList<Vendible> vendibles;
 
 	@Before
 	public void setUp() {
-		usuarios = FileManager.getUsuarios();
-
-		atracciones = FileManager.getAtracciones();
-
-		promociones = FileManager.getPromociones(atracciones);
-
-		vendibles = FileManager.getVendibles();
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		usuarios = usuarioDAO.buscarTodos();
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		atracciones = atraccionDAO.buscarTodos();
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		promociones = promocionDAO.buscarTodos(atracciones);
+		vendibles = Vendible.getVendibles();
 		
 	}
 

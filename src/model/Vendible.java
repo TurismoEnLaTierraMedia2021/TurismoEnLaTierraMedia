@@ -1,6 +1,9 @@
 package model;
 
 import java.util.LinkedList;
+import dao.AtraccionDAO;
+import dao.DAOFactory;
+import dao.PromocionDAO;
 
 public abstract class Vendible {
 	protected String nombre = "";
@@ -49,4 +52,14 @@ public abstract class Vendible {
 		return false;
 	}
 
+	public static LinkedList<Vendible> getVendibles() {
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		LinkedList<Atraccion> atracciones = atraccionDAO.buscarTodos();
+		LinkedList<Promocion> promociones = promocionDAO.buscarTodos(atracciones);
+		LinkedList<Vendible> vendibles = new LinkedList<Vendible>();
+		vendibles.addAll(atracciones);
+		vendibles.addAll(promociones);
+		return vendibles;
+	}
 }

@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.LinkedList;
-
 public interface GenericDAO<T> {
 
 	//public LinkedList<T> buscarTodos();

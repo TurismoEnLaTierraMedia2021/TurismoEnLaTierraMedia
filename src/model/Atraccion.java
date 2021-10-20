@@ -1,19 +1,24 @@
 package model;
 
 public class Atraccion extends Vendible {
+	private Integer id;
 	private String nombre = "";
 	private double costo;
 	private double duracion;
 	private Tipo tipo;
 	private int cupo;
 
-	public Atraccion(String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo) {
-
+	public Atraccion(Integer id, String nombre, double costo, double duracion, Tipo tipoDeAtraccion, int cupo) {
+		this.id = id;
 		this.nombre = nombre;
 		this.costo = costo;
 		this.duracion = duracion;
 		this.tipo = tipoDeAtraccion;
 		this.cupo = cupo;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNombre() {

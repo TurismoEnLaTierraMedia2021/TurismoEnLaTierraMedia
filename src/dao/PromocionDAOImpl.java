@@ -9,18 +9,18 @@ import java.util.LinkedList;
 import jdbc.ConnectionProvider;
 import model.Atraccion;
 import model.Promocion;
+import model.PromocionAbsoluta;
+import model.PromocionAxB;
+import model.PromocionDescuento;
 import model.Tipo;
 import model.Usuario;
 
 public class PromocionDAOImpl implements PromocionDAO {
 
 	
-	@Override
-	@Override
-	public LinkedList<Promocion> buscarTodos() {
-		
+	public LinkedList<Promocion> buscarTodos(LinkedList<Atraccion> atracciones) {
 			try {
-				String sql = "SELECT tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, a.nombre\r\n"
+				String sql = "SELECT p.id, tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, a.nombre\r\n"
 						+ "FROM promociones p \r\n"
 						+ "	INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id\r\n"
 						+ "	INNER JOIN atracciones a ON pa.atraccion_id = a.id		\r\n"
@@ -31,48 +31,103 @@ public class PromocionDAOImpl implements PromocionDAO {
 				
 				LinkedList<Promocion> promociones = new LinkedList<Promocion>();
 				while (resultados.next()) {
-					promociones.add(toPromocion(resultados, LinkedList<Atraccion> atracciones));
+					if (!promociones.contains(pd))
+						promociones.add(pd);
+					promociones.add(toPromocion(resultados,atracciones));
 				}
-
 				return promociones;
 			} catch (Exception e) {
 				throw new MissingDataException(e);
 			}
 		}
 
-		private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones) throws SQLException {
-			
-			return new Usuario(resultados.getString(2), resultados.getDouble(4), resultados.getDouble(5), 
-					Tipo.valueOf(getTipoById(resultados.getDouble(3))));
-		}
-		
-		public String getTipoById(Double id_tipo_atraccion) {
-			try {
-				String sql = "SELECT tipo FROM tipo_de_atracciones WHERE id = ? ";
-				Connection conn = ConnectionProvider.getConnection();
-				PreparedStatement statement = conn.prepareStatement(sql);
-				statement.setDouble(1, id_tipo_atraccion);
-				ResultSet resultado = statement.executeQuery();
+	
+	private Promocion toPromocion(ResultSet resultados, LinkedList<Atraccion> atracciones) throws SQLException {
+			String tipoPromocion = resultados.getString(3);
+
+			if (tipoPromocion.equals("Descuento")) {
+				Integer id = resultados.getInt(1);
+				Tipo tipo = Tipo.valueOf(resultados.getString(2));
+				String nombrePack = resultados.getString(4);
+				double porcentajeDescuento = resultados.getDouble(5);
+				int cantAtracciones = resultados.getInt(6);
+
+				LinkedList<Atraccion> atraccionesDescuento = new LinkedList<Atraccion>();
+					String nombreAtraccion = resultados.getString(7);
+					
+					
+					for (Atraccion atraccionActual : atracciones) {
+						if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+							atraccionesDescuento.add(atraccionActual);
+						}
+					}
 				
-				return resultado.getString(1);
-			} catch (Exception e) {
-				throw new MissingDataException(e);
+
+				PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack,
+						atraccionesDescuento, porcentajeDescuento);
+
+				if (!promociones.contains(pd))
+					promociones.add(pd);
+
+			
+			
+			} else if (tipoPromocion.equals("Absoluta")) {
+				Tipo tipo = Tipo.valueOf(datos[0]);
+				String nombrePack = datos[2];
+				double precio = Double.parseDouble(datos[3]);
+				int cantAtracciones = Integer.parseInt(datos[4]);
+
+				LinkedList<Atraccion> atraccionesAbsolutas = new LinkedList<Atraccion>();
+
+				for (int i = 0; i < cantAtracciones; i++) {
+
+					String nombreAtraccion = datos[5 + i];
+
+					for (Atraccion atraccionActual : atracciones) {
+						if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+							atraccionesAbsolutas.add(atraccionActual);
+						}
+					}
+				}
+
+				PromocionAbsoluta pa = new PromocionAbsoluta(tipo, tipoPromocion, nombrePack, atraccionesAbsolutas,
+						precio);
+
+				if (!promociones.contains(pa))
+					promociones.add(pa);
+
+			} else {
+				Tipo tipo = Tipo.valueOf(datos[0]);
+				String nombrePack = datos[2];
+				int cantAtracciones = Integer.parseInt(datos[4]);
+
+				LinkedList<Atraccion> atraccionesAxB = new LinkedList<Atraccion>();
+
+				for (int i = 0; i < cantAtracciones; i++) {
+
+					String nombreAtraccion = datos[5 + i];
+
+					for (Atraccion atraccionActual : atracciones) {
+						if (atraccionActual.getNombre().equals(nombreAtraccion)) {
+							atraccionesAxB.add(atraccionActual);
+						}
+
+					}
+				}
+
+				PromocionAxB pp = new PromocionAxB(tipo, tipoPromocion, nombrePack, atraccionesAxB);
+
+				if (!promociones.contains(pp))
+					promociones.add(pp);
+			
+				
 			}
 		
+		}
 		
-		
-		return null;
-	}
+
 
 }
 
-/*
-SELECT tda.tipo, p.tipo_de_promocion, p.nombre_pack, p.referencia_costo, p.cantidad_atracciones, a.nombre
-FROM promociones p 
-	INNER JOIN promociones_atracciones pa ON p.id = pa.promocion_id
-	INNER JOIN atracciones a ON pa.atraccion_id = a.id		
-	INNER JOIN tipo_de_atracciones tda ON p.tipo_id = tda.id
 
-ver el tema de la referencia_costo para las promociones axb, porque ahora el "6" ya no hace referencia a la atraccion gratis.
-Creo que iria en Null, porque ya no lo usabamos
 

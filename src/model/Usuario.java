@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.LinkedList;
 
 public class Usuario {
+	private Integer id;
 	private String nombre = "";
 	private double presupuesto;
 	private double montoTotal;
@@ -13,13 +14,18 @@ public class Usuario {
 	private Tipo tipoDeAtraccion;
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
-	public Usuario(String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion) {
+	public Usuario(Integer id, String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion) {
+		this.id = id;
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

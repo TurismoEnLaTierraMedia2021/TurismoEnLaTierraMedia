@@ -14,7 +14,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public LinkedList<Atraccion> buscarTodos() {
 		try {
-			String sql = "SELECT * FROM atracciones";
+			String sql = "SELECT a.*, tda.tipo\n"
+					+ "FROM atracciones a INNER JOIN tipo_de_atracciones tda ON a.tipo_id = tda.id";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
@@ -31,21 +32,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	}
 
 	private Atraccion toAtraccion(ResultSet resultados) throws SQLException {
-		return new Atraccion(resultados.getString(2), resultados.getDouble(3), resultados.getDouble(4), 
-				Tipo.valueOf(getTipoById(resultados.getDouble(6))), resultados.getInt(5));
+		return new Atraccion(resultados.getInt(1),resultados.getString(2), resultados.getDouble(3), resultados.getDouble(4), 
+				Tipo.valueOf(resultados.getString(7)), resultados.getInt(5));
 	}
 	
-	public String getTipoById(Double id_tipo_atraccion) {
-		try {
-			String sql = "SELECT tipo FROM tipo_de_atracciones WHERE id = ? ";
-			Connection conn = ConnectionProvider.getConnection();
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setDouble(1, id_tipo_atraccion);
-			ResultSet resultado = statement.executeQuery();
-			
-			return resultado.getString(1);
-		} catch (Exception e) {
-			throw new MissingDataException(e);
-		}
-	}
 }

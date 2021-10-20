@@ -6,8 +6,9 @@ import java.util.LinkedList;
 
 public class PromocionDescuento extends Promocion {
 
-	public PromocionDescuento(Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
+	public PromocionDescuento(Integer id,Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones,
 			double porcentajeDescuento) {
+		this.id = id;
 		this.tipo = tipo;
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;

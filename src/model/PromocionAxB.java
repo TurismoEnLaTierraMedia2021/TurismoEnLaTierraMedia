@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public class PromocionAxB extends Promocion {
 
-	public PromocionAxB(Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones) {
+	public PromocionAxB(Integer id,Tipo tipo, String tipoPromocion, String nombrePack, LinkedList<Atraccion> atracciones) {
+		this.id = id;
 		this.tipo = tipo;
 		this.tipoPromocion = tipoPromocion;
 		this.nombrePack = nombrePack;

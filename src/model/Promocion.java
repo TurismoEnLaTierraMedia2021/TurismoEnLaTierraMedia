@@ -3,6 +3,7 @@ package model;
 import java.util.LinkedList;
 
 public abstract class Promocion extends Vendible {
+	protected Integer id;
 	protected Tipo tipo;
 	protected String tipoPromocion;
 	protected String nombrePack;
@@ -22,6 +23,10 @@ public abstract class Promocion extends Vendible {
 		return tipoPromocion;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getNombrePack() {
 		return nombrePack;
 	}

@@ -46,13 +46,7 @@ public class PromocionDAOImpl implements PromocionDAO {
 		double valor_referencia = resultados.getDouble(5);
 		String datos[] = resultados.getString(7).split(",");
 
-		for (int i = 0; i < datos.length; i++) {
-			for (Atraccion atraccionActual : atracciones) {
-				if (atraccionActual.getNombre().equals(datos[i])) {
-					atraccionesPromocion.add(atraccionActual);
-				}
-			}
-		}
+		atraccionesCompradas(atracciones, atraccionesPromocion, datos);
 
 		if (tipoPromocion.equals("Descuento")) {
 			PromocionDescuento pd = new PromocionDescuento(id, tipo, tipoPromocion, nombrePack, atraccionesPromocion,
@@ -71,4 +65,16 @@ public class PromocionDAOImpl implements PromocionDAO {
 		}
 
 	}
+
+	private void atraccionesCompradas(LinkedList<Atraccion> atracciones, LinkedList<Atraccion> atraccionesPromocion, String[] datos) {
+		for (int i = 0; i < datos.length; i++) {
+			for (Atraccion atraccionActual : atracciones) {
+				if (atraccionActual.getNombre().equals(datos[i])) {
+					atraccionesPromocion.add(atraccionActual);
+				}
+			}
+		}
+	}
+	
+	
 }

@@ -30,7 +30,7 @@ public class ParqueTuristico {
 		guia.ofertarVendibles();
 		//FileManager.generarItinerario(usuarios);
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
-		itinerarioDAO.llenarItinerario(usuarios);
+		itinerarioDAO.llenarItinerario(usuarios, vendibles);
 		//LinkedList<Vendible> vendiblePrueba = new LinkedList<Vendible>();
 		//vendiblePrueba.add(vendibles.get(0));
 		//vendiblePrueba.add(vendibles.get(2));

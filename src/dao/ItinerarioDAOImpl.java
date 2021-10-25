@@ -9,48 +9,64 @@ import model.Usuario;
 import model.Vendible;
 
 public class ItinerarioDAOImpl implements ItinerarioDAO {
-	String sql = "";
-	String sql1 = "";
+	//String sql = "";
 
-	
-	public int insert(Usuario usuario, LinkedList<Vendible> vendiblesComprados) {
+	public int insert(Usuario usuario, Vendible vendible) {
 		try {
-			
-			for(Vendible vendible : vendiblesComprados) {
-				if(vendible.esPromo()) {
-					String sql1 = "INSERT INTO itinerarios (usuario_id, promocion_id) VALUES (?, ?);";
-					sql += sql1;
-				} else {
-					String sql1 = "INSERT INTO itinerarios (usuario_id, atraccion_id) VALUES (?, ?);";
-					sql += sql1;
-				}				
+			String sql;
+			if (vendible.esPromo()) {
+				 sql = "INSERT INTO itinerarios (usuario_id, promocion_id) VALUES (?, ?);";
+				//sql += sql1;
+			} else {
+				 sql = "INSERT INTO itinerarios (usuario_id, atraccion_id) VALUES (?, ?);";
+				//sql += sql1;
 			}
-			
 
-			//sql += "COMMIT;"; 
-			
+			// String sql = "INSERT INTO itinerario (usuario_id, promocion_id) VALUES (1,
+			// 4);"
+			// + "INSERT INTO itinerario (usuario_id, promocion_id) VALUES (1, 4);"
+
 			Connection conn = ConnectionProvider.getConnection();
-			conn.setAutoCommit(false);
+
 			PreparedStatement statement = conn.prepareStatement(sql);
-            
-			
 			statement.setInt(1, usuario.getId());
-			statement.setInt(2, vendiblesComprados.get(0).getId());
-			statement.setInt(3, usuario.getId());
-			statement.setInt(4, vendiblesComprados.get(1).getId());
-	
-			System.out.println(sql);
-//			System.out.println( usuario.getId());
-//			System.out.println( vendiblesComprados.get(0).getId());
-//			System.out.println( usuario.getId());
-//			System.out.println( vendiblesComprados.get(1).getId());
-			
-			
+			statement.setInt(2, vendible.getId());
+
 			int rows = statement.executeUpdate();
 
 			return rows;
-			//return 1;
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	public void llenarItinerario(LinkedList<Usuario> usuarios) {
+		try {
+			
+			for(Usuario u : usuarios) {
+				for(Vendible v : u.getVendiblesComprados()) {
+					insert(u, v);
+				}
+			}
+
+			// String sql = "INSERT INTO itinerario (usuario_id, promocion_id) VALUES (1,
+			// 4);"
+			// + "INSERT INTO itinerario (usuario_id, promocion_id) VALUES (1, 4);"
+
+//			Connection conn = ConnectionProvider.getConnection();
+//
+//			PreparedStatement statement = conn.prepareStatement(sql);
+//			statement.setInt(1, usuario.getId());
+//			statement.setInt(2, vendible.getId());
+//
+//			int rows = statement.executeUpdate();
+//
+//			return rows;
+		} catch (
+
+		Exception e) {
 			throw new MissingDataException(e);
 		}
 	}

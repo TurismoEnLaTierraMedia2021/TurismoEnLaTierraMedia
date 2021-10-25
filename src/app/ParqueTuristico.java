@@ -27,14 +27,15 @@ public class ParqueTuristico {
 		LinkedList<Usuario> usuarios = usuarioDAO.buscarTodos();
 		LinkedList<Vendible> vendibles = Vendible.getVendibles();
 		GuiaTuristica guia = new GuiaTuristica(usuarios, vendibles);
-		//guia.ofertarVendibles();
+		guia.ofertarVendibles();
 		//FileManager.generarItinerario(usuarios);
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
-		LinkedList<Vendible> vendiblePrueba = new LinkedList<Vendible>();
-		vendiblePrueba.add(vendibles.get(0));
-		vendiblePrueba.add(vendibles.get(2));
+		itinerarioDAO.llenarItinerario(usuarios);
+		//LinkedList<Vendible> vendiblePrueba = new LinkedList<Vendible>();
+		//vendiblePrueba.add(vendibles.get(0));
+		//vendiblePrueba.add(vendibles.get(2));
 		//System.out.println(vendiblePrueba.get(0).getId());
-		itinerarioDAO.insert(usuarios.get(0), vendiblePrueba);
+		//itinerarioDAO.insert(usuarios.get(0), vendiblePrueba);
 		
 		//cerrar base de datos
 	}

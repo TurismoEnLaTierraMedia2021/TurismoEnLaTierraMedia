@@ -6,5 +6,9 @@ import model.Usuario;
 import model.Vendible;
 
 public interface ItinerarioDAO {
-	public int insert(Usuario usuario, LinkedList<Vendible> vendiblesComprados);
+	public int insert(Usuario usuario, Vendible vendible);
+	public void llenarItinerario(LinkedList<Usuario> usuarios);
+	
 }
+
+

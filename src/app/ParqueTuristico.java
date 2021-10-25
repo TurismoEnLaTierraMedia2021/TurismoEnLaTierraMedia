@@ -33,8 +33,8 @@ public class ParqueTuristico {
 		LinkedList<Vendible> vendiblePrueba = new LinkedList<Vendible>();
 		vendiblePrueba.add(vendibles.get(0));
 		vendiblePrueba.add(vendibles.get(2));
-		System.out.println(vendiblePrueba);
-		//itinerarioDAO.insert(usuarios.get(0), vendiblePrueba);
+		//System.out.println(vendiblePrueba.get(0).getId());
+		itinerarioDAO.insert(usuarios.get(0), vendiblePrueba);
 		
 		//cerrar base de datos
 	}

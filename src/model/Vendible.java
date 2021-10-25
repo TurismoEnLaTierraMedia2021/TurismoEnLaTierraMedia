@@ -12,6 +12,7 @@ public abstract class Vendible {
 	protected Tipo tipo;
 	protected int cupo;
 	protected LinkedList<Atraccion> atracciones;
+	protected Integer id;
 
 	public boolean hayCupo() {
 		return false;
@@ -38,6 +39,14 @@ public abstract class Vendible {
 
 	public int getCupo() {
 		return cupo;
+	}
+	
+	public Integer getId() {
+		if(this.esPromo()) {
+			return this.getId();
+		}else {
+			return this.getId();
+		}
 	}
 
 	public boolean esPromo() {

@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import dao.DAOFactory;
 import dao.ItinerarioDAO;
 import dao.UsuarioDAO;
-import model.FileManager;
 import model.GuiaTuristica;
 import model.Usuario;
 import model.Vendible;
@@ -23,12 +22,14 @@ public class ParqueTuristico {
 		//LinkedList<Promocion> promociones = promocionDAO.buscarTodos(atracciones);
 		//System.out.println(promociones);
 		
-		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
-		LinkedList<Usuario> usuarios = usuarioDAO.buscarTodos();
+		
 		LinkedList<Vendible> vendibles = Vendible.getVendibles();
+		System.out.println(vendibles);
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		LinkedList<Usuario> usuarios = usuarioDAO.buscarTodos(vendibles);
+		System.out.println(usuarios);
 		GuiaTuristica guia = new GuiaTuristica(usuarios, vendibles);
 		guia.ofertarVendibles();
-		//FileManager.generarItinerario(usuarios);
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
 		itinerarioDAO.llenarItinerario(usuarios, vendibles);
 		//LinkedList<Vendible> vendiblePrueba = new LinkedList<Vendible>();

@@ -2,11 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import jdbc.ConnectionProvider;
-import model.Atraccion;
 import model.Usuario;
 import model.Vendible;
 

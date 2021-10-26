@@ -2,7 +2,6 @@ package dao;
 
 import java.util.LinkedList;
 
-import model.Atraccion;
 import model.Usuario;
 import model.Vendible;
 

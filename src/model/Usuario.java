@@ -14,7 +14,7 @@ public class Usuario {
 	private Tipo tipoDeAtraccion;
 	LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
 
-	public Usuario(Integer id, String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion) {
+	public Usuario(Integer id, String nombre, double presupuesto, double tiempoDisponible, Tipo tipoDeAtraccion, LinkedList<Vendible> vendiblesComprados) {
 		this.id = id;
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;

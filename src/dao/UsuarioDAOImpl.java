@@ -119,21 +119,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	private Usuario toUsuario(ResultSet resultados, LinkedList<Vendible> vendibles) throws SQLException {
 		LinkedList<Vendible> vendiblesComprados = new LinkedList<Vendible>();
-		String idPromociones[] = resultados.getString(7).split(",");
-		String idAtracciones[] = resultados.getString(8).split(",");
-	
+
 		for (Vendible v : vendibles) {
 			if (v.esPromo()) {
-				for (int i = 0; i < idPromociones.length; i++) {
-					if (v.getId().equals(Integer.parseInt(idPromociones[i])))
-						vendiblesComprados.add(v);
+				if (resultados.getString(7) != null) {
+					String idPromociones[] = resultados.getString(7).split(",");
+
+					for (int i = 0; i < idPromociones.length; i++) {
+						int id = Integer.parseInt(idPromociones[i]);
+						if (v.getId() == id)
+							vendiblesComprados.add(v);
+					}
 				}
 			} else {
-				for (int i = 0; i < idAtracciones.length; i++) {
-					if (v.getId().equals(Integer.parseInt(idAtracciones[i])))
-						vendiblesComprados.add(v);
+				if (resultados.getString(8) != null) {
+					String idAtracciones[] = resultados.getString(8).split(",");
+					for (int i = 0; i < idAtracciones.length; i++) {
+						int id = Integer.parseInt(idAtracciones[i]);
+						if (v.getId() == id)
+							vendiblesComprados.add(v);
+					}
 				}
 			}
+
 		}
 
 		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getDouble(4),

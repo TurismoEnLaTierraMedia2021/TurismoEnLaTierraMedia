@@ -28,6 +28,7 @@ public class ParqueTuristico {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		LinkedList<Usuario> usuarios = usuarioDAO.buscarTodos(vendibles);
 		System.out.println(usuarios);
+		System.out.println(usuarios.get(0).getVendiblesComprados());
 		GuiaTuristica guia = new GuiaTuristica(usuarios, vendibles);
 		guia.ofertarVendibles();
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();

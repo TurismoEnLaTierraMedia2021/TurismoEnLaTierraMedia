@@ -20,6 +20,7 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccion = tipoDeAtraccion;
+		this.vendiblesComprados = vendiblesComprados;
 	}
 
 	public Integer getId() {

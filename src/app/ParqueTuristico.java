@@ -20,8 +20,6 @@ public class ParqueTuristico {
 		GuiaTuristica guia = new GuiaTuristica(usuarios, vendibles);
 		guia.ofertarVendibles();
 		ItinerarioDAO itinerarioDAO = DAOFactory.getItinerarioDAO();
-		itinerarioDAO.llenarItinerario2(usuarios, vendibles);
-		
-		//cerrar base de datos
+		itinerarioDAO.llenarItinerario(usuarios, vendibles);
 	}
 }

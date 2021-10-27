@@ -20,10 +20,10 @@ public class GuiaTuristicaTests {
 	@Before
 	public void setUp() {
 		
-//		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
-//		atracciones = atraccionDAO.buscarTodos();
-//		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
-//		promociones = promocionDAO.buscarTodos(atracciones);
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		atracciones = atraccionDAO.buscarTodos();
+		PromocionDAO promocionDAO = DAOFactory.getPromocionDAO();
+		promociones = promocionDAO.buscarTodos(atracciones);
 		vendibles = Vendible.getVendibles();
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		usuarios = usuarioDAO.buscarTodos(vendibles);

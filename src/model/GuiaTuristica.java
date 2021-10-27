@@ -21,13 +21,7 @@ public class GuiaTuristica {
 			System.out.println(u.getNombre() + " :");
 			System.out.println("\n");
 			this.ofertarSinParar(u);
-			System.out.println("Itinerario:");
-			System.out.println(u.getVendiblesComprados());
-			System.out.println("Monedas Gastadas : " + u.getMontoTotal());
-			System.out.println("Tiempo Necesario : " + u.getTiempoTotal());
-			System.out.println("\n");
-			System.out.println(" ----------------------- ");
-			System.out.println("\n");
+			
 		}
 
 	}
@@ -40,8 +34,12 @@ public class GuiaTuristica {
 			if (usuario.puedeComprar(v)) {
 				System.out.println("Monedas disponibles: " + usuario.getPresupuesto() + "\n");
 				System.out.println("Tiempo disponibles: " + usuario.getTiempoDisponible() + "\n");
-				System.out.println("Desea comprar? \"y\" para si, \"n\" para no");
+				System.out.println("Desea comprar el siguiente producto?:");
+				System.out.println("\n");
 				System.out.println(v);
+				System.out.println("Presione \"y\" para comprar, \"n\" para ver la siguiente oferta.");
+				System.out.println(" -------------------------------------------------------------------------------------------");
+				System.out.println("\n");
 
 				InputStreamReader capturarTeclado = new InputStreamReader(System.in);
 				BufferedReader buffer = new BufferedReader(capturarTeclado);
@@ -49,11 +47,27 @@ public class GuiaTuristica {
 
 				if (respuesta.equals("y")) {
 					usuario.comprarVendible(v);
+					System.out.println("\n");
+					System.out.println("Itinerario:");
+					System.out.println(usuario.getVendiblesComprados());
+					System.out.println("Monedas Gastadas : " + usuario.getMontoTotal());
+					System.out.println("Tiempo Necesario : " + usuario.getTiempoTotal());
+					System.out.println("\n");
+					System.out.println(" -------------------------------------------------------------------------------------------");
+					System.out.println("\n");
 				}
 
+			} else {
+				
 			}
 		}
-
+		System.out.println("No hay mas ofertas disponibles para " + usuario.getNombre() + ".\n");
+		System.out.println(" ------------------------------------------------------------------------------------------- ");
+		System.out.println("\n");
+		System.out.println("Itinerario:");
+		System.out.println(usuario.getVendiblesComprados());
+		System.out.println(" ------------------------------------------------------------------------------------------- ");
+		System.out.println("\n");
 	}
 
 }

@@ -14,9 +14,9 @@ public class ItinerarioDAOImpl implements ItinerarioDAO {
 		try {
 			String sql;
 			if (vendible.esPromo()) {
-				 sql = "INSERT INTO itinerarios (usuario_id, promocion_id) VALUES (?, ?);";
+				 sql = "INSERT OR IGNORE INTO itinerarios (usuario_id, promocion_id) VALUES (?, ?);";
 			} else {
-				 sql = "INSERT INTO itinerarios (usuario_id, atraccion_id) VALUES (?, ?);";
+				 sql = "INSERT OR IGNORE INTO itinerarios (usuario_id, atraccion_id) VALUES (?, ?);";
 			}
 
 			Connection conn = ConnectionProvider.getConnection();

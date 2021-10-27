@@ -1,10 +1,10 @@
-package model;
-
-import java.io.*;
-import java.util.LinkedList;
-
-public class FileManager {
-
+//package model;
+//
+//import java.io.*;
+//import java.util.LinkedList;
+//
+//public class FileManager {
+//
 //	public static LinkedList<Usuario> getUsuarios() {
 //		LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 //		Scanner sc = null;
@@ -159,7 +159,7 @@ public class FileManager {
 //
 //		return promociones;
 //	}
-
+//
 //	public static LinkedList<Vendible> getVendibles() {
 //		List<Atraccion> atracciones = FileManager.getAtracciones();
 //		List<Promocion> promociones = FileManager.getPromociones(atracciones);
@@ -168,7 +168,7 @@ public class FileManager {
 //		vendibles.addAll(promociones);
 //		return vendibles;
 //	}
-
+//
 //	public static LinkedList<Vendible> getVendibles() {
 //		LinkedList<Atraccion> atracciones = AtraccionDAO.buscarTodos();
 //		List<Promocion> promociones = FileManager.getPromociones(atracciones);
@@ -177,30 +177,30 @@ public class FileManager {
 //		vendibles.addAll(promociones);
 //		return vendibles;
 //	}
-	
-	public static void generarItinerario(LinkedList<Usuario> usuarios) {
-		try {
-
-			for (Usuario usuario : usuarios) {
-				File f = new File(usuario.getNombre() + ".txt");
-				PrintWriter pw;
-				pw = new PrintWriter(f);
-				LinkedList<Vendible> vendibles = usuario.getVendiblesComprados();
-				pw.println(usuario.getNombre().toString() + "\n");
-				pw.println("Monedas Gastadas : " + usuario.getMontoTotal());
-				pw.println("Tiempo Necesario : " + usuario.getTiempoTotal() + "\n");
-				pw.println("Itinerario: " + "\n");
-				for (Vendible v : vendibles) {
-					pw.println(v.toString());
-				}
-				pw.println("\n");
-				pw.close();
-
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-}
+//	
+//	public static void generarItinerario(LinkedList<Usuario> usuarios) {
+//		try {
+//
+//			for (Usuario usuario : usuarios) {
+//				File f = new File(usuario.getNombre() + ".txt");
+//				PrintWriter pw;
+//				pw = new PrintWriter(f);
+//				LinkedList<Vendible> vendibles = usuario.getVendiblesComprados();
+//				pw.println(usuario.getNombre().toString() + "\n");
+//				pw.println("Monedas Gastadas : " + usuario.getMontoTotal());
+//				pw.println("Tiempo Necesario : " + usuario.getTiempoTotal() + "\n");
+//				pw.println("Itinerario: " + "\n");
+//				for (Vendible v : vendibles) {
+//					pw.println(v.toString());
+//				}
+//				pw.println("\n");
+//				pw.close();
+//
+//			}
+//
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//}
